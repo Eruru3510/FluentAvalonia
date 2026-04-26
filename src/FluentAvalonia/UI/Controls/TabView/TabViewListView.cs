@@ -110,7 +110,7 @@ public sealed class TabViewListView : ListBox
         // So this seems to work - if we grab a drag enter handler on the TabView itself and do a bounds
         // check on this, we know if the pointer left the tab strip or not. 
         _parent = this.FindAncestorOfType<TabView>();
-        _parent.AddHandler(DragDrop.DragLeaveEvent, OnParentDragEnter);
+        _parent?.AddHandler(DragDrop.DragLeaveEvent, OnParentDragEnter);
     }
 
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
