@@ -1,4 +1,4 @@
-﻿// Sorting & Filtering adapted from the WindowsCommunityToolkit
+// Sorting & Filtering adapted from the WindowsCommunityToolkit
 // AdvancedCollectionView - MIT license
 
 using System.Collections;
@@ -6,7 +6,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using Avalonia;
 using Avalonia.Collections;
-using Avalonia.Collections.Pooled;
 using Avalonia.Data;
 using Avalonia.Logging;
 
@@ -212,7 +211,7 @@ public sealed class GroupedDataCollectionView : ICollectionView, IAdvancedCollec
         IList<SortDescription> sortDescriptions)
     {
         using var defer = DeferRefresh();
-                
+
         if (filterProperties != null)
         {
             _filterProperties.Clear();
@@ -304,125 +303,125 @@ public sealed class GroupedDataCollectionView : ICollectionView, IAdvancedCollec
         switch (args.Action)
         {
             case NotifyCollectionChangedAction.Add:
+            {
+                var insertIndexInView = GetItemCountToIndex(groups, args.NewStartingIndex);
+                var list = new List<CollectionViewGroup>(args.NewItems.Count);
+
+                for (int i = 0; i < args.NewItems.Count; i++)
                 {
-                    var insertIndexInView = GetItemCountToIndex(groups, args.NewStartingIndex);
-                    var list = new List<CollectionViewGroup>(args.NewItems.Count);
-
-                    for (int i = 0; i < args.NewItems.Count; i++)
-                    {
-                        var g = isSpecialized ?
-                            new SpecializedCollectionViewGroup(this, args.NewItems[i], _itemsBinding != null) :
-                            new CollectionViewGroup(this, args.NewItems[i], _itemsBinding != null);
-                        dItems += g.GroupItems.Count;
-                        list.Add(g);
-                    }
-
-                    groups.InsertRange(args.NewStartingIndex, list);
-
-                    if (dItems == 0)
-                        return;
-
-                    _count += dItems;
-
-                    IList<object> inccList = PopulateINCCList(args.NewStartingIndex, args.NewItems.Count, dItems);
-
-                    OnVectorChanged(new NotifyCollectionChangedEventArgs(
-                            NotifyCollectionChangedAction.Add, (IList)inccList, insertIndexInView));
+                    var g = isSpecialized ?
+                        new SpecializedCollectionViewGroup(this, args.NewItems[i], _itemsBinding != null) :
+                        new CollectionViewGroup(this, args.NewItems[i], _itemsBinding != null);
+                    dItems += g.GroupItems.Count;
+                    list.Add(g);
                 }
-                break;
+
+                groups.InsertRange(args.NewStartingIndex, list);
+
+                if (dItems == 0)
+                    return;
+
+                _count += dItems;
+
+                IList<object> inccList = PopulateINCCList(args.NewStartingIndex, args.NewItems.Count, dItems);
+
+                OnVectorChanged(new NotifyCollectionChangedEventArgs(
+                        NotifyCollectionChangedAction.Add, (IList)inccList, insertIndexInView));
+            }
+            break;
 
             case NotifyCollectionChangedAction.Remove:
+            {
+                var insertIndexInView = GetItemCountToIndex(CollectionGroups, args.OldStartingIndex);
+                dItems = GetItemCount(args.OldStartingIndex, args.OldItems.Count);
+
+                IList<object> inccList = PopulateINCCList(args.OldStartingIndex, args.OldItems.Count, dItems);
+
+                groups.RemoveRange(args.OldStartingIndex, args.OldItems.Count);
+
+                if (dItems > 0)
                 {
-                    var insertIndexInView = GetItemCountToIndex(CollectionGroups, args.OldStartingIndex);
-                    dItems = GetItemCount(args.OldStartingIndex, args.OldItems.Count);
-
-                    IList<object> inccList = PopulateINCCList(args.OldStartingIndex, args.OldItems.Count, dItems);
-
-                    groups.RemoveRange(args.OldStartingIndex, args.OldItems.Count);
-
-                    if (dItems > 0)
-                    {
-                        _count -= dItems;
-
-                        OnVectorChanged(new NotifyCollectionChangedEventArgs(
-                            NotifyCollectionChangedAction.Remove, (IList)inccList, insertIndexInView));
-                    }
-
-                    if (inccList is IDisposable d)
-                        d.Dispose();
-                }
-                break;
-
-            case NotifyCollectionChangedAction.Replace:
-                {
-                    var insertIndexInView = GetItemCountToIndex(groups, args.NewStartingIndex);
-                    dItems = GetItemCount(args.OldStartingIndex, args.OldItems.Count);
-
-                    IList<object> inccListOld = PopulateINCCList(args.OldStartingIndex, args.NewItems.Count, dItems);
-
                     _count -= dItems;
 
-                    var list = new List<CollectionViewGroup>(args.NewItems.Count);
-                    dItems = 0;
-                    for (int i = 0; i < args.NewItems.Count; i++)
-                    {
-                        var g = isSpecialized ?
-                            new SpecializedCollectionViewGroup(this, args.NewItems[i], _itemsBinding != null) :
-                            new CollectionViewGroup(this, args.NewItems[i], _itemsBinding != null);
-                        dItems += g.GroupItems.Count;
-                        list.Add(g);
-                    }
-
-                    _count += dItems;
-                    CollectionGroups.InsertRange(args.NewStartingIndex, list);
-                    IList<object> inccListNew = null;
-
-                    if (dItems > 0)
-                    {
-                        inccListNew = PopulateINCCList(args.NewStartingIndex, args.NewItems.Count, dItems);
-
-                        OnVectorChanged(new NotifyCollectionChangedEventArgs(
-                            NotifyCollectionChangedAction.Replace,
-                            (IList)inccListNew, (IList)inccListOld, insertIndexInView));
-                    }
+                    OnVectorChanged(new NotifyCollectionChangedEventArgs(
+                        NotifyCollectionChangedAction.Remove, (IList)inccList, insertIndexInView));
                 }
-                break;
 
-            case NotifyCollectionChangedAction.Reset:
+                if (inccList is IDisposable d)
+                    d.Dispose();
+            }
+            break;
+
+            case NotifyCollectionChangedAction.Replace:
+            {
+                var insertIndexInView = GetItemCountToIndex(groups, args.NewStartingIndex);
+                dItems = GetItemCount(args.OldStartingIndex, args.OldItems.Count);
+
+                IList<object> inccListOld = PopulateINCCList(args.OldStartingIndex, args.NewItems.Count, dItems);
+
+                _count -= dItems;
+
+                var list = new List<CollectionViewGroup>(args.NewItems.Count);
+                dItems = 0;
+                for (int i = 0; i < args.NewItems.Count; i++)
                 {
-                    _count = 0;
-                    CollectionGroups.Clear();
-                    CreateGroups();
-
-                    OnVectorChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                    var g = isSpecialized ?
+                        new SpecializedCollectionViewGroup(this, args.NewItems[i], _itemsBinding != null) :
+                        new CollectionViewGroup(this, args.NewItems[i], _itemsBinding != null);
+                    dItems += g.GroupItems.Count;
+                    list.Add(g);
                 }
-                break;
 
-            case NotifyCollectionChangedAction.Move:
+                _count += dItems;
+                CollectionGroups.InsertRange(args.NewStartingIndex, list);
+                IList<object> inccListNew = null;
+
+                if (dItems > 0)
                 {
-                    var removeIndexInView = GetItemCountToIndex(CollectionGroups, args.OldStartingIndex);
-                    dItems = GetItemCount(args.OldStartingIndex, args.OldItems.Count);
-                    var inccList = PopulateINCCList(args.OldStartingIndex, args.OldItems.Count, dItems);
-
-                    if (args.OldItems.Count == 1)
-                    {
-                        CollectionGroups.Move(args.OldStartingIndex, args.NewStartingIndex);
-                    }
-                    else
-                    {
-                        // MoveRange is really flaky and may not give the desired result
-                        // it will fall apart with 1 item moves
-                        //   new[] {0,1,2} --> MoveRange(0,1,2) -> {1,0,2}, but should be {1,2,0}
-                        CollectionGroups.MoveRange(args.OldStartingIndex, args.OldItems.Count, args.NewStartingIndex);
-                    }
-
-                    var insertIndexInView = GetItemCountToIndex(CollectionGroups, args.NewStartingIndex);
+                    inccListNew = PopulateINCCList(args.NewStartingIndex, args.NewItems.Count, dItems);
 
                     OnVectorChanged(new NotifyCollectionChangedEventArgs(
-                            NotifyCollectionChangedAction.Move, (IList)inccList,
-                            insertIndexInView, removeIndexInView));
+                        NotifyCollectionChangedAction.Replace,
+                        (IList)inccListNew, (IList)inccListOld, insertIndexInView));
                 }
-                break;
+            }
+            break;
+
+            case NotifyCollectionChangedAction.Reset:
+            {
+                _count = 0;
+                CollectionGroups.Clear();
+                CreateGroups();
+
+                OnVectorChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            }
+            break;
+
+            case NotifyCollectionChangedAction.Move:
+            {
+                var removeIndexInView = GetItemCountToIndex(CollectionGroups, args.OldStartingIndex);
+                dItems = GetItemCount(args.OldStartingIndex, args.OldItems.Count);
+                var inccList = PopulateINCCList(args.OldStartingIndex, args.OldItems.Count, dItems);
+
+                if (args.OldItems.Count == 1)
+                {
+                    CollectionGroups.Move(args.OldStartingIndex, args.NewStartingIndex);
+                }
+                else
+                {
+                    // MoveRange is really flaky and may not give the desired result
+                    // it will fall apart with 1 item moves
+                    //   new[] {0,1,2} --> MoveRange(0,1,2) -> {1,0,2}, but should be {1,2,0}
+                    CollectionGroups.MoveRange(args.OldStartingIndex, args.OldItems.Count, args.NewStartingIndex);
+                }
+
+                var insertIndexInView = GetItemCountToIndex(CollectionGroups, args.NewStartingIndex);
+
+                OnVectorChanged(new NotifyCollectionChangedEventArgs(
+                        NotifyCollectionChangedAction.Move, (IList)inccList,
+                        insertIndexInView, removeIndexInView));
+            }
+            break;
         }
 
         IList<object> PopulateINCCList(int groupStart, int groupCount, int itemCount)

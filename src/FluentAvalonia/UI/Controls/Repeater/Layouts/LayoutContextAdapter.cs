@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using FluentAvalonia.Core;
 
@@ -11,9 +11,9 @@ internal class LayoutContextAdapter : VirtualizingLayoutContext
         _nonVirtualizingContext = nonVirtualizingContext;
     }
 
-    protected internal override object LayoutStateCore 
-    { 
-        get => _nonVirtualizingContext?.LayoutState; 
+    protected internal override object LayoutStateCore
+    {
+        get => _nonVirtualizingContext?.LayoutState;
         set
         {
             if (_nonVirtualizingContext != null)

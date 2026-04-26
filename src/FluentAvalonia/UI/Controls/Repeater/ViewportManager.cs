@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Threading;
@@ -79,7 +79,7 @@ internal class ViewportManager
     public Control MadeAnchor => _makeAnchorElement;
 
     private bool HasScroller => _scroller != null;
-        
+
     public Rect GetLayoutVisibleWindowDiscardAnchor()
     {
         var visibleWindow = _visibleWindow;

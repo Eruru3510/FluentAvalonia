@@ -1,9 +1,7 @@
-﻿using System;
 using System.Collections;
 using System.Collections.Specialized;
 using Avalonia;
 using Avalonia.Automation;
-using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
@@ -19,7 +17,7 @@ namespace FluentAvalonia.UI.Controls;
 /// <summary>
 /// The BreadcrumbBar control provides the direct path of pages or folders to the current location.
 /// </summary>
-[TemplatePart(Name = s_tpItemsRepeater, Type=typeof(ItemsRepeater))]
+[TemplatePart(Name = s_tpItemsRepeater, Type = typeof(ItemsRepeater))]
 public class BreadcrumbBar : TemplatedControl
 {
     public BreadcrumbBar()
@@ -27,7 +25,7 @@ public class BreadcrumbBar : TemplatedControl
         _itemsRepeaterElementFactory = new BreadcrumbElementFactory();
         _itemsRepeaterLayout = new BreadcrumbLayout(this);
         _itemsIterable = new BreadcrumbIterable(null);
-        
+
         AddHandler(KeyDownEvent, OnChildPreviewKeyDown, RoutingStrategies.Tunnel);
         //AccessKeyInvoked
         GotFocus += OnGettingFocus;
@@ -427,7 +425,7 @@ public class BreadcrumbBar : TemplatedControl
     private bool MoveFocusNext()
     {
         int movementNext = 1;
-        
+
         if (_focusedIndex == 0)
         {
             var ir = _itemsRepeater;

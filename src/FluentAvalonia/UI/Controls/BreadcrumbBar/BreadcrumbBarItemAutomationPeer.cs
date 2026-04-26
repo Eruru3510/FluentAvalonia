@@ -1,4 +1,4 @@
-﻿using Avalonia.Automation.Peers;
+using Avalonia.Automation.Peers;
 using Avalonia.Automation.Provider;
 using Avalonia.Controls;
 
@@ -9,7 +9,7 @@ namespace FluentAvalonia.UI.Controls;
 /// </summary>
 public class BreadcrumbBarItemAutomationPeer : ControlAutomationPeer, IInvokeProvider
 {
-    public BreadcrumbBarItemAutomationPeer(Control owner) 
+    public BreadcrumbBarItemAutomationPeer(Control owner)
         : base(owner)
     {
     }
@@ -25,7 +25,7 @@ public class BreadcrumbBarItemAutomationPeer : ControlAutomationPeer, IInvokePro
         return nameof(BreadcrumbBarItem);
     }
 
-    protected override AutomationControlType GetAutomationControlTypeCore() => 
+    protected override AutomationControlType GetAutomationControlTypeCore() =>
         AutomationControlType.Button;
 
     private BreadcrumbBarItem GetImpl() => Owner as BreadcrumbBarItem;

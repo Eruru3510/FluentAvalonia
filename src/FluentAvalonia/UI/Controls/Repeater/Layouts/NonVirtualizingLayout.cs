@@ -1,4 +1,3 @@
-﻿using System.Xml.Linq;
 using Avalonia;
 
 namespace FluentAvalonia.UI.Controls;

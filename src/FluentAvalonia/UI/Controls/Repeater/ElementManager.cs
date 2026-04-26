@@ -1,7 +1,7 @@
-﻿using Avalonia;
-using Avalonia.Controls;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using Avalonia;
+using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -148,7 +148,7 @@ internal class ElementManager
 
         if (realizedIndex == 0)
         {
-            _firstRealizedDataIndex = _realizedElements.Count == 0 ? 
+            _firstRealizedDataIndex = _realizedElements.Count == 0 ?
                 -1 : _firstRealizedDataIndex + count;
         }
     }
@@ -248,7 +248,7 @@ internal class ElementManager
     }
 
     // Does the given window intersect the range of realized elements
-    public bool IsWindowConnected(Rect window, ScrollOrientation orientation, 
+    public bool IsWindowConnected(Rect window, ScrollOrientation orientation,
         bool scrollOrientationSameAsFlow)
     {
         Debug.Assert(IsVirtualizingContext());
@@ -264,13 +264,13 @@ internal class ElementManager
                 (orientation == ScrollOrientation.Vertical ? ScrollOrientation.Horizontal : ScrollOrientation.Vertical) :
                 orientation;
 
-            var windowStart = effectiveOrientation == ScrollOrientation.Vertical ? 
+            var windowStart = effectiveOrientation == ScrollOrientation.Vertical ?
                 window.Y : window.X;
-            var windowEnd = effectiveOrientation == ScrollOrientation.Vertical ? 
+            var windowEnd = effectiveOrientation == ScrollOrientation.Vertical ?
                 window.Y + window.Height : window.X + window.Width;
-            var firstElementStart = effectiveOrientation == ScrollOrientation.Vertical ? 
+            var firstElementStart = effectiveOrientation == ScrollOrientation.Vertical ?
                 firstElementBounds.Y : firstElementBounds.X;
-            var lastElementEnd = effectiveOrientation == ScrollOrientation.Vertical ? 
+            var lastElementEnd = effectiveOrientation == ScrollOrientation.Vertical ?
                 lastElementBounds.Y + lastElementBounds.Height : lastElementBounds.X + lastElementBounds.Width;
 
             intersects = firstElementStart <= windowEnd &&
@@ -293,39 +293,39 @@ internal class ElementManager
                 break;
 
             case NotifyCollectionChangedAction.Replace:
-                {
-                    var oldSize = args.OldItems.Count;
-                    var newSize = args.NewItems.Count;
-                    var oldStartIndex = args.OldStartingIndex;
-                    var newStartIndex = args.NewStartingIndex;
+            {
+                var oldSize = args.OldItems.Count;
+                var newSize = args.NewItems.Count;
+                var oldStartIndex = args.OldStartingIndex;
+                var newStartIndex = args.NewStartingIndex;
 
-                    if (oldSize == newSize &&
-                        oldStartIndex == newStartIndex &&
-                        IsDataIndexRealized(oldStartIndex) &&
-                        IsDataIndexRealized(oldStartIndex + oldSize - 1))
+                if (oldSize == newSize &&
+                    oldStartIndex == newStartIndex &&
+                    IsDataIndexRealized(oldStartIndex) &&
+                    IsDataIndexRealized(oldStartIndex + oldSize - 1))
+                {
+                    // Straight up replace of n items within the realization window.
+                    // Removing and adding might causes us to lose the anchor causing us
+                    // to throw away all containers and start from scratch.
+                    // Instead, we can just clear those items and set the element to
+                    // null (sentinel) and let the next measure get new containers for them.
+                    var startRealizedIndex = GetRealizedRangeIndexFromDataIndex(oldStartIndex);
+                    for (int realizedIndex = startRealizedIndex; realizedIndex < startRealizedIndex + oldSize; realizedIndex++)
                     {
-                        // Straight up replace of n items within the realization window.
-                        // Removing and adding might causes us to lose the anchor causing us
-                        // to throw away all containers and start from scratch.
-                        // Instead, we can just clear those items and set the element to
-                        // null (sentinel) and let the next measure get new containers for them.
-                        var startRealizedIndex = GetRealizedRangeIndexFromDataIndex(oldStartIndex);
-                        for (int realizedIndex = startRealizedIndex; realizedIndex < startRealizedIndex + oldSize; realizedIndex++)
+                        if (_realizedElements[realizedIndex] is Control c)
                         {
-                            if (_realizedElements[realizedIndex] is Control c)
-                            {
-                                _context.RecycleElement(c);
-                                _realizedElements[realizedIndex] = null;
-                            }
+                            _context.RecycleElement(c);
+                            _realizedElements[realizedIndex] = null;
                         }
                     }
-                    else
-                    {
-                        OnItemsRemoved(oldStartIndex, oldSize);
-                        OnItemsAdded(newStartIndex, newSize);
-                    }
                 }
-                break;
+                else
+                {
+                    OnItemsRemoved(oldStartIndex, oldSize);
+                    OnItemsAdded(newStartIndex, newSize);
+                }
+            }
+            break;
 
             case NotifyCollectionChangedAction.Remove:
                 OnItemsRemoved(args.OldStartingIndex, args.OldItems.Count);
@@ -396,7 +396,7 @@ internal class ElementManager
         int frontCutoffIndex = -1;
         int backCutoffIndex = realizedRangeSize;
 
-        for (int i =0; 
+        for (int i = 0;
             i < realizedRangeSize && !Intersects(window, _realizedElementLayoutBounds[i], orientation);
             i++)
         {

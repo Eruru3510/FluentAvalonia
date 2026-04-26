@@ -1,4 +1,4 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Automation.Peers;
@@ -89,7 +89,7 @@ public partial class TabView : TemplatedControl
         {
             _tabContainerGrid.SizeChanged += HandleTabContainerGridSizeChangedForVerticalTabView;
         }
-        
+
         _tabContainerGrid.PointerEntered += OnTabStripPointerEnter;
         _tabContainerGrid.PointerExited += OnTabStripPointerLeave;
 
@@ -253,7 +253,7 @@ public partial class TabView : TemplatedControl
             // Only set TabContent to null if we're truly switching orientations
             UpdateTabContent();
         }
-        
+
 
         var oldClass = GetClassForStripLocation(args.GetOldValue<TabViewTabStripLocation>());
         var newClass = GetClassForStripLocation(args.GetNewValue<TabViewTabStripLocation>());
@@ -261,7 +261,7 @@ public partial class TabView : TemplatedControl
         PseudoClasses.Add(newClass);
 
         _listView?.HandleTabStripLocationChanged(args.GetNewValue<TabViewTabStripLocation>(), oldClass, newClass);
-        
+
         UpdateTabWidths();
 
         static bool IsHorizontal(TabViewTabStripLocation loc) =>
@@ -468,7 +468,7 @@ public partial class TabView : TemplatedControl
 
                     foreach (var item in l.AsSpan())
                         lvItems.Add(item);
-                }                
+                }
             }
 
             TabItems = lvItems;
@@ -503,7 +503,7 @@ public partial class TabView : TemplatedControl
             _itemsPresenter = _listView.Presenter;
             _itemsPresenter.SizeChanged += OnItemsPresenterSizeChanged;
         }
-        
+
         var scrollViewer = _listView.Scroller;
         _scrollViewer = scrollViewer;
         if (scrollViewer != null)
@@ -516,7 +516,7 @@ public partial class TabView : TemplatedControl
             {
                 scrollViewer.Loaded += OnScrollViewerLoaded;
             }
-        }        
+        }
 
         UpdateBottomBorderLineVisualStates();
         UpdateNonClientRegion();
@@ -633,7 +633,7 @@ public partial class TabView : TemplatedControl
     {
         if (SelectedItem != null)
         {
-            var tvi = SelectedItem as TabViewItem ?? ContainerFromItem(SelectedItem) as TabViewItem;            
+            var tvi = SelectedItem as TabViewItem ?? ContainerFromItem(SelectedItem) as TabViewItem;
             tvi?.StartBringTabIntoView();
         }
     }
@@ -708,7 +708,7 @@ public partial class TabView : TemplatedControl
                 // Posting to Dispatcher so delay calling this until after next layout pass
                 // when items are all realized and ContainerFromIndex works
                 // TODO: Do we still need to post to dispatcher
-                
+
                 Dispatcher.UIThread.Post(() =>
                 {
                     UpdateTabWidths();
@@ -745,7 +745,7 @@ public partial class TabView : TemplatedControl
     {
         var tab = ContainerFromItem(item) as TabViewItem;
         tab ??= tab.FindAncestorOfType<TabViewItem>();
-        
+
         if (tab == null)
         {
             // This is a fallback scenario for tabs without a data context
@@ -869,7 +869,7 @@ public partial class TabView : TemplatedControl
 
                 // It is not ideal to call UpdateLayout here, but it is necessary to ensure that the ContentPresenter has expanded its content
                 // into the live visual tree.
-                
+
 
                 if (shouldMoveFocusToNewTab)
                 {
@@ -1117,7 +1117,7 @@ public partial class TabView : TemplatedControl
                             }
                         }
                     }
-                }                
+                }
             }
         }
 
@@ -1129,7 +1129,7 @@ public partial class TabView : TemplatedControl
                 _listView.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
                 _listView.SetValue(ScrollViewer.VerticalScrollBarVisibilityProperty, ScrollBarVisibility.Auto);
             }
-            
+
             if (_tabContainerGrid != null)
             {
                 var rows = _tabContainerGrid.RowDefinitions;
@@ -1141,9 +1141,9 @@ public partial class TabView : TemplatedControl
                         continue;
 
                     height += item.DesiredSize.Height;
-                }    
+                }
                 var maxSpace = _tabContainerGrid.Bounds.Height;
-                
+
                 if (_isItemDraggedOver)
                 {
                     // Add the dragging space in vertical view by using the avg. item height
@@ -1223,7 +1223,7 @@ public partial class TabView : TemplatedControl
             if (!_isDraggingPane)
             {
                 FAUISettings.GetSystemDragSize(TopLevel.GetTopLevel(this).RenderScaling, out var cxDrag, out _);
-                
+
                 if (double.Abs(delta) < cxDrag)
                 {
                     return;

@@ -1,16 +1,11 @@
-﻿using System.Collections.Concurrent;
-using System.Diagnostics;
+using System.Collections.Concurrent;
 using Avalonia;
-using Avalonia.Automation;
-using Avalonia.Automation.Peers;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Shapes;
 using Avalonia.Input;
 using Avalonia.Threading;
 using Avalonia.Utilities;
-using Avalonia.VisualTree;
-using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -263,8 +258,8 @@ public partial class RangeSlider : TemplatedControl
     {
         _isDraggingStart = _isDraggingEnd = false;
         OnThumbDragCompleted(e);
-        OnValueChanged(sender.Equals(_minThumb) ? 
-            new RangeChangedEventArgs(_oldValue, RangeStart, RangeSelectorProperty.RangeStartValue) : 
+        OnValueChanged(sender.Equals(_minThumb) ?
+            new RangeChangedEventArgs(_oldValue, RangeStart, RangeSelectorProperty.RangeStartValue) :
             new RangeChangedEventArgs(_oldValue, RangeEnd, RangeSelectorProperty.RangeEndValue));
         SyncThumbs();
 
@@ -454,7 +449,7 @@ public partial class RangeSlider : TemplatedControl
                 return;
             var rs = RangeStart;
             var re = RangeEnd;
-            
+
             if (delta > 0)
             {
                 if (MathUtilities.AreClose(re, max))
@@ -473,15 +468,15 @@ public partial class RangeSlider : TemplatedControl
                     delta = min - rs;
             }
 
-            
+
             RangeStart += delta;
             RangeEnd += delta;
             _absolutePosition = position;
             return;
         }
-                
+
         var normalizedPosition = ((position / DragWidth) * (Maximum - Minimum)) + Minimum;
-         
+
         if (_pointerManipulatingMin && normalizedPosition < RangeEnd)
         {
             RangeStart = DragThumb(_minThumb, 0, Canvas.GetLeft(_maxThumb), position);
@@ -648,7 +643,7 @@ public partial class RangeSlider : TemplatedControl
                 fromMinKeyDown ? 0 : Canvas.GetLeft(_minThumb),
                 fromMinKeyDown ? Canvas.GetLeft(_maxThumb) : DragWidth,
                 fromMinKeyDown ? relativeLeft : relativeRight);
-            
+
             if (_toolTipText != null)
             {
                 UpdateToolTipText(fromMinKeyDown ? RangeStart : RangeEnd);

@@ -1,6 +1,5 @@
-﻿// Adapted from TerraFX.Interop.Windows, MIT license
+// Adapted from TerraFX.Interop.Windows, MIT license
 
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -11,7 +10,7 @@ namespace FluentAvalonia.Interop.Win32;
 internal unsafe struct NCCALCSIZE_PARAMS
 {
     public _rgrc_e__FixedBuffer rgrc;
-     
+
     public WINDOWPOS* lppos;
 
     public struct _rgrc_e__FixedBuffer

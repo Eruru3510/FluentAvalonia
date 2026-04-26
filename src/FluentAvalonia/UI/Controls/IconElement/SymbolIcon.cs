@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls.Documents;
 using Avalonia.Media;
 using Avalonia.Media.TextFormatting;
@@ -57,7 +57,7 @@ public class SymbolIcon : FAIconElement
         }
         else if (change.Property == TextElement.ForegroundProperty)
         {
-            _textLayout = null;  
+            _textLayout = null;
             // FAIconElement calls InvalidateVisual
         }
     }

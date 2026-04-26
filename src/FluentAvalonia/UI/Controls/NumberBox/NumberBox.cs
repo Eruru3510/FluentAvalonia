@@ -1,13 +1,12 @@
-﻿using Avalonia;
+using System.Globalization;
+using Avalonia;
 using Avalonia.Automation.Peers;
-using Avalonia.Automation.Provider;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using FluentAvalonia.Core;
-using System.Globalization;
 
 namespace FluentAvalonia.UI.Controls;
 

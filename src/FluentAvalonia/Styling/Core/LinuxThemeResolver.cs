@@ -105,19 +105,20 @@ internal static class LinuxThemeResolver
                 }
             }
         }
-        else switch (_desktopEnvironment)
-        {
-            case DesktopEnvironment.Cinnamon:
-                return GetThemeFromName(ReadGsettingsKey("org.cinnamon.desktop.interface", "gtk-theme"));
-            case DesktopEnvironment.Other:
-                var color = ReadGsettingsKey("org.gnome.desktop.interface", "color-scheme");
-                return color switch
-                {
-                    "prefer-light" => ThemeVariant.Light,
-                    "prefer-dark" => ThemeVariant.Dark,
-                    _ => GetThemeFromName(ReadGsettingsKey("org.gnome.desktop.interface", "gtk-theme"))
-                };
-        }
+        else
+            switch (_desktopEnvironment)
+            {
+                case DesktopEnvironment.Cinnamon:
+                    return GetThemeFromName(ReadGsettingsKey("org.cinnamon.desktop.interface", "gtk-theme"));
+                case DesktopEnvironment.Other:
+                    var color = ReadGsettingsKey("org.gnome.desktop.interface", "color-scheme");
+                    return color switch
+                    {
+                        "prefer-light" => ThemeVariant.Light,
+                        "prefer-dark" => ThemeVariant.Dark,
+                        _ => GetThemeFromName(ReadGsettingsKey("org.gnome.desktop.interface", "gtk-theme"))
+                    };
+            }
 
         return ThemeVariant.Light;
     }

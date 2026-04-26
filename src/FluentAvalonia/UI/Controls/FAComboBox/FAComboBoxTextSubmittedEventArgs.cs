@@ -1,5 +1,3 @@
-﻿using System;
-
 namespace FluentAvalonia.UI.Controls;
 
 /// <summary>

@@ -1,10 +1,9 @@
-﻿using Avalonia;
-using Avalonia.Controls.Metadata;
-using Avalonia.Controls.Presenters;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Templates;
-using FluentAvalonia.Core;
 using Avalonia.Media;
+using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -47,7 +46,7 @@ public partial class TaskDialog
     /// </summary>
     public static readonly DirectProperty<TaskDialog, IList<TaskDialogButton>> ButtonsProperty =
         AvaloniaProperty.RegisterDirect<TaskDialog, IList<TaskDialogButton>>(nameof(Buttons),
-            x => x.Buttons, (x,v) => x.Buttons = v);
+            x => x.Buttons, (x, v) => x.Buttons = v);
 
     /// <summary>
     /// Defines the <see cref="Commands"/> property

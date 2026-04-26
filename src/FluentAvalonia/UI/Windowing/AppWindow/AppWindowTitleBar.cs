@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Media;
 using Avalonia.Utilities;
 
@@ -90,7 +90,7 @@ public class AppWindowTitleBar
     /// </summary>
     public Color? InactiveForegroundColor
     {
-        get => _inactiveForegroundColor; 
+        get => _inactiveForegroundColor;
         set
         {
             if (_inactiveForegroundColor != value)
@@ -106,7 +106,7 @@ public class AppWindowTitleBar
     /// </summary>
     public Color? ButtonBackgroundColor
     {
-        get => _buttonBackgroundColor; 
+        get => _buttonBackgroundColor;
         set
         {
             if (_buttonBackgroundColor != value)
@@ -122,7 +122,7 @@ public class AppWindowTitleBar
     /// </summary>
     public Color? ButtonForegroundColor
     {
-        get => _buttonForegroundColor; 
+        get => _buttonForegroundColor;
         set
         {
             if (_buttonForegroundColor != value)
@@ -156,7 +156,7 @@ public class AppWindowTitleBar
     /// </summary>
     public Color? ButtonHoverForegroundColor
     {
-        get => _buttonHoverForegroundColor; 
+        get => _buttonHoverForegroundColor;
         set
         {
             if (_buttonHoverForegroundColor != value)
@@ -190,7 +190,7 @@ public class AppWindowTitleBar
     /// </summary>
     public Color? ButtonPressedForegroundColor
     {
-        get => _buttonPressedForegroundColor; 
+        get => _buttonPressedForegroundColor;
         set
         {
             if (_buttonPressedForegroundColor != value)
@@ -206,7 +206,7 @@ public class AppWindowTitleBar
     /// </summary>
     public Color? ButtonInactiveBackgroundColor
     {
-        get => _buttonInactiveBackgroundColor; 
+        get => _buttonInactiveBackgroundColor;
         set
         {
             if (_buttonInactiveBackgroundColor != value)
@@ -222,7 +222,7 @@ public class AppWindowTitleBar
     /// </summary>
     public Color? ButtonInactiveForegroundColor
     {
-        get => _buttonInactiveForegroundColor; 
+        get => _buttonInactiveForegroundColor;
         set
         {
             if (_buttonInactiveForegroundColor != value)

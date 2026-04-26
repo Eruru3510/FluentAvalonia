@@ -1,4 +1,8 @@
-﻿using Avalonia;
+using System.Collections;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
+using Avalonia;
 using Avalonia.Animation.Easings;
 using Avalonia.Automation;
 using Avalonia.Collections;
@@ -12,10 +16,6 @@ using Avalonia.Layout;
 using Avalonia.Rendering.Composition;
 using Avalonia.Threading;
 using FluentAvalonia.Core;
-using System.Collections;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Diagnostics;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -3261,7 +3261,7 @@ public partial class NavigationView : HeaderedContentControl
         {
             var paneContentGrid = _paneContentGrid;
 
-            if ((prevIndicator != nextIndicator) && paneContentGrid != null && prevIndicator != null && 
+            if ((prevIndicator != nextIndicator) && paneContentGrid != null && prevIndicator != null &&
                 nextIndicator != null && FAUISettings.AreAnimationsEnabled())
             {
                 // Make sure both indicators are visible and in their original locations
@@ -3529,7 +3529,7 @@ public partial class NavigationView : HeaderedContentControl
             }
         }
     }
-        
+
     private Control FindSelectionIndicator(object item)
     {
         if (item != null)

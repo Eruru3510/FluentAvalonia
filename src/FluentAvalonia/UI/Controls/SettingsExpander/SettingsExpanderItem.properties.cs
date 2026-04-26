@@ -1,9 +1,9 @@
-﻿using Avalonia;
 using System.Windows.Input;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
-using Avalonia.Controls.Metadata;
 using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;
@@ -17,49 +17,49 @@ public partial class SettingsExpanderItem : ContentControl
     /// <summary>
     /// Defines the <see cref="Description"/> property
     /// </summary>
-    public static readonly StyledProperty<string> DescriptionProperty = 
+    public static readonly StyledProperty<string> DescriptionProperty =
         SettingsExpander.DescriptionProperty.AddOwner<SettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="IconSource"/> property
     /// </summary>
-    public static readonly StyledProperty<IconSource> IconSourceProperty = 
+    public static readonly StyledProperty<IconSource> IconSourceProperty =
         SettingsExpander.IconSourceProperty.AddOwner<SettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="Footer"/> property
     /// </summary>
-    public static readonly StyledProperty<object> FooterProperty = 
+    public static readonly StyledProperty<object> FooterProperty =
         SettingsExpander.FooterProperty.AddOwner<SettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="FooterTemplate"/> property
     /// </summary>
-    public static readonly StyledProperty<IDataTemplate> FooterTemplateProperty = 
+    public static readonly StyledProperty<IDataTemplate> FooterTemplateProperty =
         SettingsExpander.FooterTemplateProperty.AddOwner<SettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="ActionIconSource"/> property
     /// </summary>
-    public static readonly StyledProperty<IconSource> ActionIconSourceProperty = 
+    public static readonly StyledProperty<IconSource> ActionIconSourceProperty =
         SettingsExpander.ActionIconSourceProperty.AddOwner<SettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="IsClickEnabled"/> property
     /// </summary>
-    public static readonly StyledProperty<bool> IsClickEnabledProperty = 
+    public static readonly StyledProperty<bool> IsClickEnabledProperty =
         SettingsExpander.IsClickEnabledProperty.AddOwner<SettingsExpanderItem>();
-        
+
     /// <summary>
     /// Defines the <see cref="Command"/> property
     /// </summary>
-    public static readonly StyledProperty<ICommand> CommandProperty = 
+    public static readonly StyledProperty<ICommand> CommandProperty =
         Button.CommandProperty.AddOwner<SettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="CommandParameter"/> property
     /// </summary>
-    public static readonly StyledProperty<object> CommandParameterProperty = 
+    public static readonly StyledProperty<object> CommandParameterProperty =
         Button.CommandParameterProperty.AddOwner<SettingsExpanderItem>();
 
     /// <summary>

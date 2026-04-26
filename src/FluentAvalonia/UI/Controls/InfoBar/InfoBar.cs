@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Documents;
 using Avalonia.Controls.Presenters;
@@ -9,7 +9,7 @@ using FluentAvalonia.Core;
 namespace FluentAvalonia.UI.Controls;
 
 public partial class InfoBar : ContentControl
-{    
+{
     /// <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {

@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;
@@ -28,7 +28,7 @@ public enum IndexBasedLayoutOrientation
 /// Represents the base class for an object that sizes and arranges child elements for a host.
 /// </summary>
 public abstract class Layout : AvaloniaObject
-{    
+{
     internal string LayoutId { get; set; }
 
     /// <summary>

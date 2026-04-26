@@ -1,8 +1,8 @@
-﻿using Avalonia.Layout;
-using Avalonia;
-using Avalonia.Controls;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Layout;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -29,43 +29,43 @@ public class UniformGridLayout : VirtualizingLayout, IOrientationBasedMeasures, 
     /// <summary>
     /// Defines the <see cref="MinItemWidth"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinItemWidthProperty = 
+    public static readonly StyledProperty<double> MinItemWidthProperty =
         AvaloniaProperty.Register<UniformGridLayout, double>(nameof(MinItemWidth));
 
     /// <summary>
     /// Defines the <see cref="MinItemHeight"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinItemHeightProperty = 
+    public static readonly StyledProperty<double> MinItemHeightProperty =
         AvaloniaProperty.Register<UniformGridLayout, double>(nameof(MinItemHeight));
 
     /// <summary>
     /// Defines the <see cref="MinRowSpacing"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinRowSpacingProperty = 
+    public static readonly StyledProperty<double> MinRowSpacingProperty =
         AvaloniaProperty.Register<UniformGridLayout, double>(nameof(MinRowSpacing));
 
     /// <summary>
     /// Defines the <see cref="MinColumnSpacing"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinColumnSpacingProperty = 
+    public static readonly StyledProperty<double> MinColumnSpacingProperty =
         AvaloniaProperty.Register<UniformGridLayout, double>(nameof(MinColumnSpacing));
 
     /// <summary>
     /// Defines the <see cref="ItemsJustification"/> property
     /// </summary>
-    public static readonly StyledProperty<UniformGridLayoutItemsJustification> ItemsJustificationProperty = 
+    public static readonly StyledProperty<UniformGridLayoutItemsJustification> ItemsJustificationProperty =
         AvaloniaProperty.Register<UniformGridLayout, UniformGridLayoutItemsJustification>(nameof(ItemsJustification));
 
     /// <summary>
     /// Defines the <see cref="ItemsStretch"/> property
     /// </summary>
-    public static readonly StyledProperty<UniformGridLayoutItemsStretch> ItemsStretchProperty = 
+    public static readonly StyledProperty<UniformGridLayoutItemsStretch> ItemsStretchProperty =
         AvaloniaProperty.Register<UniformGridLayout, UniformGridLayoutItemsStretch>(nameof(ItemsStretch));
 
     /// <summary>
     /// Defines the <see cref="MaximumRowsOrColumns"/> property
     /// </summary>
-    public static readonly StyledProperty<int> MaximumRowsOrColumnsProperty = 
+    public static readonly StyledProperty<int> MaximumRowsOrColumnsProperty =
         AvaloniaProperty.Register<UniformGridLayout, int>(nameof(MaximumRowsOrColumns), defaultValue: -1);
 
     /// <summary>
@@ -254,7 +254,7 @@ public class UniformGridLayout : VirtualizingLayout, IOrientationBasedMeasures, 
         return value;
     }
 
-    protected internal override void OnItemsChangedCore(VirtualizingLayoutContext context, object source, 
+    protected internal override void OnItemsChangedCore(VirtualizingLayoutContext context, object source,
         NotifyCollectionChangedEventArgs args)
     {
         GetFlowAlgorithm(context).OnItemsSourceChanged(source, args, context);
@@ -262,24 +262,24 @@ public class UniformGridLayout : VirtualizingLayout, IOrientationBasedMeasures, 
         InvalidateLayout();
     }
 
-    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetMeasureSize(int index, Size availableSize, 
+    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetMeasureSize(int index, Size availableSize,
         VirtualizingLayoutContext context)
     {
         var gridState = GetAsGridState(context.LayoutState);
         return new Size(gridState.EffectiveItemWidth, gridState.EffectiveItemHeight);
     }
 
-    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetProvisionalArrangeSize(int index, Size measureSize, 
+    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetProvisionalArrangeSize(int index, Size measureSize,
         Size desiredSize, VirtualizingLayoutContext context)
     {
         var gridState = GetAsGridState(context.LayoutState);
         return new Size(gridState.EffectiveItemWidth, gridState.EffectiveItemHeight);
     }
-    
+
     bool IFlowLayoutAlgorithmDelegates.Algorithm_ShouldBreakLine(int index, double remainingSpace) =>
         remainingSpace < 0;
 
-    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForRealizationRect(Size availableSize, 
+    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForRealizationRect(Size availableSize,
         VirtualizingLayoutContext context)
     {
         Rect bounds = new Rect(double.NaN, double.NaN, double.NaN, double.NaN);
@@ -336,7 +336,7 @@ public class UniformGridLayout : VirtualizingLayout, IOrientationBasedMeasures, 
         // Constants
         int itemsCount = context.ItemCount;
         double availableSizeMinor = this.Minor(availableSize);
-        
+
 
         int itemsPerLine = (int)Math.Min(// note use of unsigned ints
             Math.Max(1u, !double.IsInfinity(availableSizeMinor) ?
@@ -389,10 +389,12 @@ public class UniformGridLayout : VirtualizingLayout, IOrientationBasedMeasures, 
     }
 
     void IFlowLayoutAlgorithmDelegates.Algorithm_OnElementMeasured(Control element, int index, Size availableSize,
-        Size measureSize, Size desiredSize, Size provisionalArrangeSize, VirtualizingLayoutContext context) { }
+        Size measureSize, Size desiredSize, Size provisionalArrangeSize, VirtualizingLayoutContext context)
+    { }
 
     void IFlowLayoutAlgorithmDelegates.Algorithm_OnLineArranged(int startIndex, int countInLine, double lineSize,
-        VirtualizingLayoutContext context) { }
+        VirtualizingLayoutContext context)
+    { }
 
     private int GetItemsPerLine(Size availableSize, VirtualizingLayoutContext context)
     {
@@ -451,7 +453,7 @@ public class UniformGridLayout : VirtualizingLayout, IOrientationBasedMeasures, 
         IndexBasedLayoutOrientation = orientation == Orientation.Horizontal ?
             IndexBasedLayoutOrientation.LeftToRight : IndexBasedLayoutOrientation.TopToBottom;
     }
-   
+
 
     private double _minItemWidth = double.NaN;
     private double _minItemHeight = double.NaN;

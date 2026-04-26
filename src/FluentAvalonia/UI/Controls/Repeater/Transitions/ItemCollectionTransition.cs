@@ -1,4 +1,4 @@
-﻿#pragma warning disable
+#pragma warning disable
 using System.Diagnostics;
 using Avalonia;
 using Avalonia.Controls;
@@ -17,7 +17,7 @@ public class ItemCollectionTransition
     public ItemCollectionTransition(ItemCollectionTransitionProvider provider, Control element,
         ItemCollectionTransitionTriggers triggers,
         Rect oldBounds, Rect newBounds)
-        : this(provider, element, ItemCollectionTransitionOperation.Move, triggers, 
+        : this(provider, element, ItemCollectionTransitionOperation.Move, triggers,
               oldBounds, newBounds)
     {
 

@@ -1,4 +1,4 @@
-﻿#pragma warning disable
+#pragma warning disable
 // Note this class has no documentation yet from Microsoft - disabling the warnings around
 // public APIs with no documentation
 using Avalonia;
@@ -50,7 +50,7 @@ public class RecyclePool
             _elements.Add(key, pool);
         }
     }
-    
+
     protected virtual Control TryGetElementCore(string key, Control owner)
     {
         if (_elements.TryGetValue(key, out var elements))
@@ -140,7 +140,7 @@ public class RecyclePool
         public Panel Owner;
     }
 
-    private readonly Dictionary<string, List<ElementInfo>> _elements = 
+    private readonly Dictionary<string, List<ElementInfo>> _elements =
         new Dictionary<string, List<ElementInfo>>();
 
     // WinUI stores this as a DependencyProperty on DataTemplate (attached), but since

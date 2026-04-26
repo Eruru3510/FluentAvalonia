@@ -1,4 +1,4 @@
-﻿// Sorting & Filtering adapted from the WindowsCommunityToolkit
+// Sorting & Filtering adapted from the WindowsCommunityToolkit
 // AdvancedCollectionView - MIT license
 
 using System.Collections;
@@ -318,7 +318,7 @@ public sealed class IterableCollectionView : ICollectionView, IAdvancedCollectio
         IList<SortDescription> sortDescriptions)
     {
         using var defer = DeferRefresh();
-                
+
         if (filterProperties != null)
         {
             _filterProperties.Clear();

@@ -1,4 +1,3 @@
-﻿using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Automation;
 using Avalonia.Automation.Peers;
@@ -320,7 +319,7 @@ public class BreadcrumbBarItem : ContentControl
     {
         // The new list contains all the elements in reverse order
         int itemsSourceSize = ellipsisItemsSource.Count();
-        
+
         // A copy of the hidden elements array in BreadcrumbLayout is created
         // to avoid getting a Layout cycle exception
         var newItemsSource = new List<object>(itemsSourceSize);

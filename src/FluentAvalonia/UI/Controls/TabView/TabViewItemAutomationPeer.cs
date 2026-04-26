@@ -1,4 +1,4 @@
-﻿using Avalonia.Automation.Peers;
+using Avalonia.Automation.Peers;
 using Avalonia.Automation.Provider;
 using Avalonia.Controls;
 using Avalonia.VisualTree;
@@ -10,7 +10,7 @@ namespace FluentAvalonia.UI.Controls;
 /// </summary>
 public sealed class TabViewItemAutomationPeer : ListItemAutomationPeer, ISelectionItemProvider
 {
-    public TabViewItemAutomationPeer(ContentControl owner) 
+    public TabViewItemAutomationPeer(ContentControl owner)
         : base(owner)
     {
     }

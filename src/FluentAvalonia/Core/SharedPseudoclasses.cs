@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace FluentAvalonia.Core;
 
 // These are pseudoclass names that are used in multiple controls. Share them so we don't have

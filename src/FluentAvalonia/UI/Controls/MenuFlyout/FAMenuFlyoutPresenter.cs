@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Templates;
@@ -91,7 +91,7 @@ public class FAMenuFlyoutPresenter : ItemsControl
             _iconCount = iconCount;
             _toggleCount = toggleCount;
             // Update all other items already realized based on changes to this one
-            UpdateVisualState();            
+            UpdateVisualState();
         }
 
         // This container isn't realized yet, so we need to apply the classes here
@@ -155,129 +155,129 @@ public class FAMenuFlyoutPresenter : ItemsControl
         switch (args.Key)
         {
             case Key.Down:
+            {
+                var current = TopLevel.GetTopLevel(this).FocusManager.GetFocusedElement();
+                if (current is MenuFlyoutItemBase mfib)
                 {
-                    var current = TopLevel.GetTopLevel(this).FocusManager.GetFocusedElement();
-                    if (current is MenuFlyoutItemBase mfib)
+                    var index = IndexFromContainer(mfib);
+                    if (index == -1)
+                        return; // Somethings wrong
+
+                    while (true)
                     {
-                        var index = IndexFromContainer(mfib);
-                        if (index == -1)
-                            return; // Somethings wrong
+                        index++;
+                        if (index >= ItemCount)
+                            index = 0;
 
-                        while (true)
+                        var cont = ContainerFromIndex(index);
+                        if (cont != null && !(cont is MenuFlyoutSeparator) &&
+                            cont.Focusable && cont.IsEffectivelyEnabled)
                         {
-                            index++;
-                            if (index >= ItemCount)
-                                index = 0;
-
-                            var cont = ContainerFromIndex(index);
-                            if (cont != null && !(cont is MenuFlyoutSeparator) &&
-                                cont.Focusable && cont.IsEffectivelyEnabled)
-                            {
-                                cont.Focus(NavigationMethod.Directional);
-                                args.Handled = true;
-                                break;
-                            }
-                            else if (cont == item)
-                            {
-                                // If we loop back to the original item, stop 
-                                break; 
-                            }
+                            cont.Focus(NavigationMethod.Directional);
+                            args.Handled = true;
+                            break;
+                        }
+                        else if (cont == item)
+                        {
+                            // If we loop back to the original item, stop 
+                            break;
                         }
                     }
                 }
-                break;
+            }
+            break;
 
             case Key.Up:
+            {
+                var current = TopLevel.GetTopLevel(this).FocusManager.GetFocusedElement();
+                if (current is MenuFlyoutItemBase mfib)
                 {
-                    var current = TopLevel.GetTopLevel(this).FocusManager.GetFocusedElement();
-                    if (current is MenuFlyoutItemBase mfib)
+                    var index = IndexFromContainer(mfib);
+                    if (index == -1)
+                        return; // Somethings wrong
+
+                    while (true)
                     {
-                        var index = IndexFromContainer(mfib);
-                        if (index == -1)
-                            return; // Somethings wrong
+                        index--;
+                        if (index < 0)
+                            index = ItemCount - 1;
 
-                        while (true)
+                        var cont = ContainerFromIndex(index);
+                        if (cont != null && !(cont is MenuFlyoutSeparator) &&
+                            cont.Focusable && cont.IsEffectivelyEnabled)
                         {
-                            index--;
-                            if (index < 0)
-                                index = ItemCount - 1;
-
-                            var cont = ContainerFromIndex(index);
-                            if (cont != null && !(cont is MenuFlyoutSeparator) &&
-                                cont.Focusable && cont.IsEffectivelyEnabled)
-                            {
-                                cont.Focus(NavigationMethod.Directional);
-                                args.Handled = true;
-                                break;
-                            }
-                            else if (cont == item)
-                            {
-                                // If we loop back to the original item, stop 
-                                break;
-                            }
+                            cont.Focus(NavigationMethod.Directional);
+                            args.Handled = true;
+                            break;
+                        }
+                        else if (cont == item)
+                        {
+                            // If we loop back to the original item, stop 
+                            break;
                         }
                     }
                 }
-                break;
+            }
+            break;
 
             case Key.Right:
+            {
+                if (item is MenuFlyoutSubItem mfsi)
                 {
-                    if (item is MenuFlyoutSubItem mfsi)
-                    {
-                        mfsi.Open(true);
-                        args.Handled = true;
-                    }
+                    mfsi.Open(true);
+                    args.Handled = true;
                 }
-                break;
+            }
+            break;
 
             case Key.Left:
+            {
+                if (InternalParent is MenuFlyoutSubItem mfsi)
                 {
-                    if (InternalParent is MenuFlyoutSubItem mfsi)
-                    {
-                        // NOTE: Order matters here for some reason, focus the MFSI FIRST,
-                        // then close it. Otherwise the focus adorner isn't shown
-                        mfsi.Focus(NavigationMethod.Directional);
-                        mfsi.Close();
-                        args.Handled = true;
-                    }
+                    // NOTE: Order matters here for some reason, focus the MFSI FIRST,
+                    // then close it. Otherwise the focus adorner isn't shown
+                    mfsi.Focus(NavigationMethod.Directional);
+                    mfsi.Close();
+                    args.Handled = true;
                 }
-                break;
+            }
+            break;
 
             case Key.Enter:
+            {
+                var current = TopLevel.GetTopLevel(this).FocusManager.GetFocusedElement();
+                if (current is MenuFlyoutItemBase mfib && mfib.Focusable && mfib.IsEffectivelyEnabled)
                 {
-                    var current = TopLevel.GetTopLevel(this).FocusManager.GetFocusedElement();
-                    if (current is MenuFlyoutItemBase mfib && mfib.Focusable && mfib.IsEffectivelyEnabled)
+                    if (mfib is MenuFlyoutSubItem mfsi)
                     {
-                        if (mfib is MenuFlyoutSubItem mfsi)
-                        {
-                            mfsi.Open(true);
-                        }
-                        else
-                        {
-                            (mfib as MenuFlyoutItem)?.RaiseClick();
-                            CloseMenu();
-                        }
-                        args.Handled = true;
-                    }
-                }
-                break;
-
-            case Key.Escape:
-                {
-                    if (InternalParent is MenuFlyoutSubItem mfsi)
-                    {
-                        // NOTE: Order matters here for some reason, focus the MFSI FIRST,
-                        // then close it. Otherwise the focus adorner isn't shown
-                        mfsi.Focus(NavigationMethod.Directional);
-                        mfsi.Close();                        
-                        args.Handled = true;
+                        mfsi.Open(true);
                     }
                     else
                     {
+                        (mfib as MenuFlyoutItem)?.RaiseClick();
                         CloseMenu();
                     }
+                    args.Handled = true;
                 }
-                break;
+            }
+            break;
+
+            case Key.Escape:
+            {
+                if (InternalParent is MenuFlyoutSubItem mfsi)
+                {
+                    // NOTE: Order matters here for some reason, focus the MFSI FIRST,
+                    // then close it. Otherwise the focus adorner isn't shown
+                    mfsi.Focus(NavigationMethod.Directional);
+                    mfsi.Close();
+                    args.Handled = true;
+                }
+                else
+                {
+                    CloseMenu();
+                }
+            }
+            break;
         }
 
         base.OnKeyDown(args);
@@ -362,7 +362,7 @@ public class FAMenuFlyoutPresenter : ItemsControl
             {
                 item.Focus(fromKeyboard ? NavigationMethod.Directional : NavigationMethod.Unspecified);
             }
-        }, DispatcherPriority.Render);        
+        }, DispatcherPriority.Render);
     }
 
     internal void MenuClosed()
@@ -387,7 +387,7 @@ public class FAMenuFlyoutPresenter : ItemsControl
             fmf.Close();
         }
     }
-        
+
     private void UpdateVisualState()
     {
         // v2 Change: ControlThemes means we can't use styling on the MFP to apply the 

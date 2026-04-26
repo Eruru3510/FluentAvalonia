@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Input.Platform;
 using FluentAvalonia.UI.Input;
 
@@ -80,7 +80,7 @@ public class TextCommandBarFlyout : CommandBarFlyout
         addButtonToCommandsIfPresent(TextControlButtons.Cut, SecondaryCommands);
         addButtonToCommandsIfPresent(TextControlButtons.Copy, SecondaryCommands);
         addButtonToCommandsIfPresent(TextControlButtons.Paste, SecondaryCommands);
-        
+
         //TODO: the bool arg
         //addRichEditButtonToCommandsIfPresent(TextControlButtons.Bold, PrimaryCommands, false);
         //addRichEditButtonToCommandsIfPresent(TextControlButtons.Italic, PrimaryCommands, false);
@@ -184,7 +184,7 @@ public class TextCommandBarFlyout : CommandBarFlyout
         {
             buttonsToAdd |= TextControlButtons.Copy;
         }
-        
+
         return buttonsToAdd;
     }
 
@@ -234,7 +234,7 @@ public class TextCommandBarFlyout : CommandBarFlyout
             {
                 UpdateButtons();
             }
-        }        
+        }
     }
 
     private async void ExecuteCopyCommand()
@@ -266,7 +266,7 @@ public class TextCommandBarFlyout : CommandBarFlyout
             {
                 UpdateButtons();
             }
-        }        
+        }
     }
 
     private async void ExecutePasteCommand()
@@ -298,7 +298,7 @@ public class TextCommandBarFlyout : CommandBarFlyout
             {
                 UpdateButtons();
             }
-        }           
+        }
     }
 
     private void ExecuteBoldCommand()
@@ -367,28 +367,28 @@ public class TextCommandBarFlyout : CommandBarFlyout
             switch (textControlButton)
             {
                 case TextControlButtons.Cut:
-                    {
-                        var button = new CommandBarButton();
-                        InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Cut), ExecuteCutCommand);
-                        _buttons.Add(TextControlButtons.Cut, button);
-                        return button;
-                    }
+                {
+                    var button = new CommandBarButton();
+                    InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Cut), ExecuteCutCommand);
+                    _buttons.Add(TextControlButtons.Cut, button);
+                    return button;
+                }
 
                 case TextControlButtons.Copy:
-                    {
-                        var button = new CommandBarButton();
-                        InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Copy), ExecuteCopyCommand);
-                        _buttons.Add(TextControlButtons.Copy, button);
-                        return button;
-                    }
+                {
+                    var button = new CommandBarButton();
+                    InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Copy), ExecuteCopyCommand);
+                    _buttons.Add(TextControlButtons.Copy, button);
+                    return button;
+                }
 
                 case TextControlButtons.Paste:
-                    {
-                        var button = new CommandBarButton();
-                        InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Paste), ExecutePasteCommand);
-                        _buttons.Add(TextControlButtons.Paste, button);
-                        return button;
-                    }
+                {
+                    var button = new CommandBarButton();
+                    InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Paste), ExecutePasteCommand);
+                    _buttons.Add(TextControlButtons.Paste, button);
+                    return button;
+                }
 
                 // Skip Bold/Italic/Underline, since we don't have those right now
 
@@ -398,28 +398,28 @@ public class TextCommandBarFlyout : CommandBarFlyout
                     return null;
 
                 case TextControlButtons.Undo:
-                    {
-                        var button = new CommandBarButton();
-                        InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Undo), ExecuteUndoCommand);
-                        _buttons.Add(TextControlButtons.Undo, button);
-                        return button;
-                    }
+                {
+                    var button = new CommandBarButton();
+                    InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Undo), ExecuteUndoCommand);
+                    _buttons.Add(TextControlButtons.Undo, button);
+                    return button;
+                }
 
                 case TextControlButtons.Redo:
-                    {
-                        var button = new CommandBarButton();
-                        InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Redo), ExecuteRedoCommand);
-                        _buttons.Add(TextControlButtons.Redo, button);
-                        return button;
-                    }
+                {
+                    var button = new CommandBarButton();
+                    InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.Redo), ExecuteRedoCommand);
+                    _buttons.Add(TextControlButtons.Redo, button);
+                    return button;
+                }
 
                 case TextControlButtons.SelectAll:
-                    {
-                        var button = new CommandBarButton();
-                        InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.SelectAll), ExecuteSelectAllCommand);
-                        _buttons.Add(TextControlButtons.SelectAll, button);
-                        return button;
-                    }
+                {
+                    var button = new CommandBarButton();
+                    InitializeButtonWithUICommand(button, new StandardUICommand(StandardUICommandKind.SelectAll), ExecuteSelectAllCommand);
+                    _buttons.Add(TextControlButtons.SelectAll, button);
+                    return button;
+                }
 
                 default:
                     throw new NotSupportedException("Invalid TextControlButtons");

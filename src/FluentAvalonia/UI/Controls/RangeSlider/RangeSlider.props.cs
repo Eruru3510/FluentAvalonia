@@ -1,6 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
@@ -21,36 +18,36 @@ public partial class RangeSlider
     /// <summary>
     /// Defines the <see cref="Minimum"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinimumProperty = 
+    public static readonly StyledProperty<double> MinimumProperty =
         RangeBase.MinimumProperty.AddOwner<RangeSlider>(
             new StyledPropertyMetadata<double>(0d));
 
     /// <summary>
     /// Defines the <see cref="Maximum"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MaximumProperty = 
+    public static readonly StyledProperty<double> MaximumProperty =
         RangeBase.MaximumProperty.AddOwner<RangeSlider>(
             new StyledPropertyMetadata<double>(100d));
 
     /// <summary>
     /// Defines the <see cref="RangeStart"/> property
     /// </summary>
-    public static readonly StyledProperty<double> RangeStartProperty = 
+    public static readonly StyledProperty<double> RangeStartProperty =
         AvaloniaProperty.Register<RangeSlider, double>(nameof(RangeStart),
             defaultValue: 0, defaultBindingMode: BindingMode.TwoWay);
 
     /// <summary>
     /// Defines the <see cref="RangeEnd"/> property
     /// </summary>
-    public static readonly StyledProperty<double> RangeEndProperty = 
-        AvaloniaProperty.Register<RangeSlider, double>(nameof(RangeEnd), 
+    public static readonly StyledProperty<double> RangeEndProperty =
+        AvaloniaProperty.Register<RangeSlider, double>(nameof(RangeEnd),
             defaultValue: 100, defaultBindingMode: BindingMode.TwoWay);
 
     /// <summary>
     /// Defines the <see cref="StepFrequency"/> property
     /// </summary>
-    public static readonly StyledProperty<double> StepFrequencyProperty = 
-        AvaloniaProperty.Register<RangeSlider, double>(nameof(StepFrequency), 
+    public static readonly StyledProperty<double> StepFrequencyProperty =
+        AvaloniaProperty.Register<RangeSlider, double>(nameof(StepFrequency),
             defaultValue: 1);
 
     /// <summary>
@@ -62,14 +59,14 @@ public partial class RangeSlider
     /// <summary>
     /// Defines the <see cref="MinimumRange"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinimumRangeProperty = 
+    public static readonly StyledProperty<double> MinimumRangeProperty =
         AvaloniaProperty.Register<RangeSlider, double>(nameof(MinimumRange), defaultValue: 0d);
-    
+
 
     /// <summary>
     /// Defines the <see cref="ShowValueToolTip"/> property
     /// </summary>
-    public static readonly StyledProperty<bool> ShowValueToolTipProperty = 
+    public static readonly StyledProperty<bool> ShowValueToolTipProperty =
         AvaloniaProperty.Register<RangeSlider, bool>(nameof(ShowValueToolTip), defaultValue: true);
 
     /// <summary>

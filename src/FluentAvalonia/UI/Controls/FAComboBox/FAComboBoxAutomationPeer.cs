@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Automation;
 using Avalonia.Automation.Peers;
 using Avalonia.Automation.Provider;
@@ -13,7 +13,7 @@ namespace FluentAvalonia.UI.Controls;
 public class FAComboBoxAutomationPeer : SelectingItemsControlAutomationPeer,
     IExpandCollapseProvider, IValueProvider
 {
-    public FAComboBoxAutomationPeer(SelectingItemsControl owner) 
+    public FAComboBoxAutomationPeer(SelectingItemsControl owner)
         : base(owner)
     {
 

@@ -1,4 +1,4 @@
-﻿using Avalonia.Automation;
+using Avalonia.Automation;
 using Avalonia.Automation.Peers;
 using Avalonia.Automation.Provider;
 using Avalonia.Controls;
@@ -9,7 +9,7 @@ public class NumberBoxAutomationPeer : ControlAutomationPeer, IRangeValueProvide
 {
     public NumberBoxAutomationPeer(Control owner) : base(owner)
     {
-        
+
     }
 
     public bool IsReadOnly { get; }

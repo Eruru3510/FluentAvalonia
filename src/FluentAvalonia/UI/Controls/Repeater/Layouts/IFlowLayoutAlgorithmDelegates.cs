@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
@@ -15,7 +15,7 @@ internal interface IFlowLayoutAlgorithmDelegates
     Size Algorithm_GetProvisionalArrangeSize(int index, Size measureSize, Size desiredSize,
         VirtualizingLayoutContext context);
     bool Algorithm_ShouldBreakLine(int index, double remainingSpace);
-    FlowLayoutAnchorInfo Algorithm_GetAnchorForRealizationRect(Size availableSize, 
+    FlowLayoutAnchorInfo Algorithm_GetAnchorForRealizationRect(Size availableSize,
         VirtualizingLayoutContext context);
     FlowLayoutAnchorInfo Algorithm_GetAnchorForTargetElement(int targetIndex, Size availableSize,
         VirtualizingLayoutContext ccontext);

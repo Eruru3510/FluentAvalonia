@@ -1,4 +1,6 @@
-﻿using Avalonia;
+using System.Collections.Specialized;
+using System.Text;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
@@ -7,11 +9,8 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Logging;
 using Avalonia.Threading;
-using FluentAvalonia.UI.Controls.Experimental;
 using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Navigation;
-using System.Collections.Specialized;
-using System.Text;
 
 namespace FluentAvalonia.UI.Controls;
 

@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
@@ -9,7 +9,7 @@ internal class BreadcrumbLayout : NonVirtualizingLayout
 
     public BreadcrumbLayout(BreadcrumbBar breadcrumb)
     {
-        _breadcrumb = new WeakReference<BreadcrumbBar>(breadcrumb);        
+        _breadcrumb = new WeakReference<BreadcrumbBar>(breadcrumb);
     }
 
     internal ref readonly bool EllipsisIsRendered => ref _ellipsisIsRendered;

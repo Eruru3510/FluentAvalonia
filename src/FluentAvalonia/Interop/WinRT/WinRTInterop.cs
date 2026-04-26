@@ -1,6 +1,4 @@
-﻿using System;
 using System.Runtime.InteropServices;
-using System.Threading;
 using MicroCom.Runtime;
 
 namespace FluentAvalonia.Interop.WinRT;

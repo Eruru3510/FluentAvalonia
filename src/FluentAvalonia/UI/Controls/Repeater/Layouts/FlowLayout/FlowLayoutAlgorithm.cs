@@ -1,7 +1,7 @@
-﻿using Avalonia;
-using Avalonia.Controls;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using Avalonia;
+using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -136,7 +136,7 @@ internal class FlowLayoutAlgorithm : IOrientationBasedMeasures
         var provisionalArrangeSize = _algorithmCallbacks
             .Algorithm_GetProvisionalArrangeSize(index, measureSize, element.DesiredSize, context);
         _algorithmCallbacks.Algorithm_OnElementMeasured(
-            element, index, availableSize, measureSize, element.DesiredSize, 
+            element, index, availableSize, measureSize, element.DesiredSize,
             provisionalArrangeSize, context);
 
         return provisionalArrangeSize;
@@ -157,7 +157,7 @@ internal class FlowLayoutAlgorithm : IOrientationBasedMeasures
         else
         {
             bool isRealizationWindowConnected = _elementManager
-                .IsWindowConnected(RealizationRect(), ScrollOrientation, 
+                .IsWindowConnected(RealizationRect(), ScrollOrientation,
                 _scrollOrientationSameAsFlow);
             // Item spacing and size in non-virtualizing direction change can cause elements to reflow
             // and get a new column position. In that case we need the anchor to be positioned in the
@@ -578,7 +578,7 @@ internal class FlowLayoutAlgorithm : IOrientationBasedMeasures
                 if (this.MajorStart(currentBounds) != currentLineOffset)
                 {
                     spaceAtLineEnd = this.Minor(finalSize) - this.MinorStart(previousElementBounds) - this.MinorSize(previousElementBounds);
-                    PerformLineAlignment(i - countInLine, countInLine, spaceAtLineStart, spaceAtLineEnd, 
+                    PerformLineAlignment(i - countInLine, countInLine, spaceAtLineStart, spaceAtLineEnd,
                         currentLineSize, lineAlignment, isWrapping, finalSize, layoutId);
                     spaceAtLineStart = this.MinorStart(currentBounds);
                     countInLine = 0;
@@ -596,8 +596,8 @@ internal class FlowLayoutAlgorithm : IOrientationBasedMeasures
             if (countInLine > 0)
             {
                 double spaceAtEnd = this.Minor(finalSize) - this.MinorStart(previousElementBounds) - this.MinorSize(previousElementBounds);
-                PerformLineAlignment(realizedElementCount - countInLine, countInLine, 
-                    spaceAtLineStart, spaceAtEnd, currentLineSize, lineAlignment, 
+                PerformLineAlignment(realizedElementCount - countInLine, countInLine,
+                    spaceAtLineStart, spaceAtEnd, currentLineSize, lineAlignment,
                     isWrapping, finalSize, layoutId);
             }
         }
@@ -623,51 +623,51 @@ internal class FlowLayoutAlgorithm : IOrientationBasedMeasures
                     switch (lineAlignment)
                     {
                         case LineAlignment.Start:
-                            {
-                                this.SetMinorStart(ref bounds, this.MinorStart(bounds) - spaceAtLineStart);
-                                break;
-                            }
+                        {
+                            this.SetMinorStart(ref bounds, this.MinorStart(bounds) - spaceAtLineStart);
+                            break;
+                        }
 
                         case LineAlignment.End:
-                            {
-                                this.SetMinorStart(ref bounds, this.MinorStart(bounds) + spaceAtLineEnd);
-                                break;
-                            }
+                        {
+                            this.SetMinorStart(ref bounds, this.MinorStart(bounds) + spaceAtLineEnd);
+                            break;
+                        }
 
                         case LineAlignment.Center:
-                            {
-                                var minor = this.MinorStart(bounds);
-                                this.SetMinorStart(ref bounds, minor - spaceAtLineStart);
-                                this.SetMinorStart(ref bounds, minor + totalSpace / 2);
-                                break;
-                            }
+                        {
+                            var minor = this.MinorStart(bounds);
+                            this.SetMinorStart(ref bounds, minor - spaceAtLineStart);
+                            this.SetMinorStart(ref bounds, minor + totalSpace / 2);
+                            break;
+                        }
 
                         case LineAlignment.SpaceAround:
-                            {
-                                double interItemSpace = countInLine >= 1 ? totalSpace / (countInLine * 2) : 0;
-                                var minor = this.MinorStart(bounds);
-                                this.SetMinorStart(ref bounds, minor - spaceAtLineStart);
-                                this.SetMinorStart(ref bounds, minor + interItemSpace * ((rangeIndex - lineStartIndex + 1) * 2 - 1));
-                                break;
-                            }
+                        {
+                            double interItemSpace = countInLine >= 1 ? totalSpace / (countInLine * 2) : 0;
+                            var minor = this.MinorStart(bounds);
+                            this.SetMinorStart(ref bounds, minor - spaceAtLineStart);
+                            this.SetMinorStart(ref bounds, minor + interItemSpace * ((rangeIndex - lineStartIndex + 1) * 2 - 1));
+                            break;
+                        }
 
                         case LineAlignment.SpaceBetween:
-                            {
-                                double interItemSpace = countInLine > 1 ? totalSpace / (countInLine - 1) : 0;
-                                var minor = this.MinorStart(bounds);
-                                this.SetMinorStart(ref bounds, minor - spaceAtLineStart) ;
-                                this.SetMinorStart(ref bounds, minor + interItemSpace * (rangeIndex - lineStartIndex));
-                                break;
-                            }
+                        {
+                            double interItemSpace = countInLine > 1 ? totalSpace / (countInLine - 1) : 0;
+                            var minor = this.MinorStart(bounds);
+                            this.SetMinorStart(ref bounds, minor - spaceAtLineStart);
+                            this.SetMinorStart(ref bounds, minor + interItemSpace * (rangeIndex - lineStartIndex));
+                            break;
+                        }
 
                         case LineAlignment.SpaceEvenly:
-                            {
-                                double interItemSpace = countInLine >= 1 ? totalSpace / (countInLine + 1) : 0;
-                                var minor = this.MinorStart(bounds);
-                                this.SetMinorStart(ref bounds, minor - spaceAtLineStart);
-                                this.SetMinorStart(ref bounds, minor + interItemSpace * (rangeIndex - lineStartIndex + 1));
-                                break;
-                            }
+                        {
+                            double interItemSpace = countInLine >= 1 ? totalSpace / (countInLine + 1) : 0;
+                            var minor = this.MinorStart(bounds);
+                            this.SetMinorStart(ref bounds, minor - spaceAtLineStart);
+                            this.SetMinorStart(ref bounds, minor + interItemSpace * (rangeIndex - lineStartIndex + 1));
+                            break;
+                        }
                     }
                 }
             }

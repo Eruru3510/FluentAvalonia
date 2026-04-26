@@ -1,7 +1,5 @@
-﻿using Avalonia.Collections;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using Avalonia.Collections;
 
 namespace FluentAvalonia.UI.Controls;
 

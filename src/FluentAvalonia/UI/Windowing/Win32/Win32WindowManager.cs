@@ -1,13 +1,13 @@
-﻿using static FluentAvalonia.Interop.Win32Interop;
-using Avalonia.Controls;
-using FluentAvalonia.Interop.Win32;
-using Avalonia;
-using Avalonia.Logging;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Avalonia.Threading;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Logging;
 using Avalonia.Platform;
+using Avalonia.Threading;
 using FluentAvalonia.Interop;
+using FluentAvalonia.Interop.Win32;
+using static FluentAvalonia.Interop.Win32Interop;
 
 namespace FluentAvalonia.UI.Windowing;
 
@@ -18,7 +18,7 @@ internal unsafe class Win32WindowManager
         _window = window;
 
         Hwnd = (HWND)_window.TryGetPlatformHandle().Handle;
-        
+
         _oldWndProc = GetWindowLongPtrW(Hwnd, GWLP_WNDPROC);
 
 #if NET5_0_OR_GREATER
@@ -183,7 +183,7 @@ internal unsafe class Win32WindowManager
         marg.topHeight = -frame.top;
 
         var hr = DwmExtendFrameIntoClientArea((HWND)Hwnd, &marg);
-        
+
         if (!hr.SUCCEEDED)
         {
             Logger.TryGet(LogEventLevel.Error, "AppWindow")?.Log("AppWindow.EnsureExtended", "DwmExtendFrameIntoClientArea failed with HR {hr}", hr);
@@ -209,7 +209,7 @@ internal unsafe class Win32WindowManager
         var windowState = _window.WindowState;
 
         UpdateMaximizeState();
-                
+
         if (_isMaximized)
         {
             newSize.top += GetResizeHandleHeight();
@@ -384,7 +384,7 @@ internal unsafe class Win32WindowManager
         // app or system theme.
         Win32Interop.ApplyTheme(Hwnd, true);
     }
-    
+
     private void WindowOnClosed(object sender, EventArgs e)
     {
         var ps = Application.Current.PlatformSettings;

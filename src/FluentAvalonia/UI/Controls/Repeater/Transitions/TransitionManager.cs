@@ -1,9 +1,10 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.VisualTree;
 
 namespace FluentAvalonia.UI.Controls;
+
 internal sealed class TransitionManager
 {
     public TransitionManager(ItemsRepeater owner)

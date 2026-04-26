@@ -1,7 +1,7 @@
-﻿using Avalonia.Media.Immutable;
-using Avalonia.Media;
-using Avalonia.Utilities;
 using Avalonia;
+using Avalonia.Media;
+using Avalonia.Media.Immutable;
+using Avalonia.Utilities;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -131,7 +131,7 @@ internal class BorderRenderHelper
                     _cornerRadius.BottomRight, _cornerRadius.BottomLeft);
 
                 context.DrawRectangle(Background, null, rrect, BoxShadow);
-                
+
                 rrect = new RoundedRect(new Rect(_size).Deflate(borderThickness / 2), _cornerRadius.TopLeft, _cornerRadius.TopRight,
                     _cornerRadius.BottomRight, _cornerRadius.BottomLeft);
 

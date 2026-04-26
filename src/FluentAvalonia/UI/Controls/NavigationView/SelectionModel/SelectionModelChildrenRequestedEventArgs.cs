@@ -1,4 +1,4 @@
-﻿namespace FluentAvalonia.UI.Controls;
+namespace FluentAvalonia.UI.Controls;
 
 /// <summary>
 /// Provides data for the <see cref="SelectionModel.ChildrenRequested"/> event.
@@ -51,7 +51,7 @@ internal class SelectionModelChildrenRequestedEventArgs : EventArgs
             return _sourceIndexPath;
         }
     }
-        
+
     internal void Initialize(
         object source,
         IndexPath sourceIndexPath,

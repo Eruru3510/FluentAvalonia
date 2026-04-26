@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
@@ -47,7 +47,7 @@ public partial class TaskDialog : ContentControl
         if (_moreDetailsButton != null)
         {
             _moreDetailsButton.Click += MoreDetailsButtonClick;
-        }        
+        }
     }
 
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
@@ -92,7 +92,7 @@ public partial class TaskDialog : ContentControl
             PseudoClasses.Set(s_pcIconForeground, change.NewValue != null);
         }
     }
-    
+
     protected override bool RegisterContentPresenter(ContentPresenter presenter)
     {
         if (presenter.Name == "ContentPresenter")
@@ -113,7 +113,7 @@ public partial class TaskDialog : ContentControl
             SetButtons();
             SetCommands();
             TrySetInitialFocus();
-        }       
+        }
     }
 
     private void OnKeyDownPreview(object sender, KeyEventArgs e)
@@ -165,7 +165,7 @@ public partial class TaskDialog : ContentControl
         _isOpening = true;
 
         OnOpening();
-        
+
         var owner = XamlRoot ?? VisualRoot as Visual;
 
         void UnparentDialog()
@@ -270,8 +270,8 @@ public partial class TaskDialog : ContentControl
                     e.Cancel = true;
                     CloseCore(TaskDialogStandardResult.None);
                 };
-            }            
-            
+            }
+
             _host = host;
             IsVisible = true;
 
@@ -374,7 +374,7 @@ public partial class TaskDialog : ContentControl
         }
 
         if (_host is Window w)
-        {            
+        {
             _ignoreWindowClosingEvent = true;
 
             w.Close(result);
@@ -523,7 +523,7 @@ public partial class TaskDialog : ContentControl
 
                 com.Classes.Add(s_cFATDCom);
 
-                commands.Add(com);                
+                commands.Add(com);
             }
             else if (_commands[i] is TaskDialogRadioButton tdrb)
             {

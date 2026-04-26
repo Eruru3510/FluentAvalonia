@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using Avalonia.Automation.Peers;
 
 namespace FluentAvalonia.UI.Controls;
@@ -8,7 +8,7 @@ namespace FluentAvalonia.UI.Controls;
 /// </summary>
 public class TeachingTipAutomationPeer : ContentControlAutomationPeer
 {
-    internal TeachingTipAutomationPeer(TeachingTip owner) 
+    internal TeachingTipAutomationPeer(TeachingTip owner)
         : base(owner)
     {
 
