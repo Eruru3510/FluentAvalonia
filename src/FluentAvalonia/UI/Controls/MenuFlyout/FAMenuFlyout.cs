@@ -1,13 +1,12 @@
-﻿using Avalonia;
+using System.Collections;
+using System.Collections.Specialized;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Metadata;
 using Avalonia.Styling;
-using FluentAvalonia.Core;
-using System.Collections;
-using System.Collections.Specialized;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -233,7 +232,7 @@ public class FAMenuFlyout : PopupFlyoutBase
         //}
     }
 
-   
+
     private FAMenuFlyoutPresenter _presenter;
     private Classes _classes;
 }

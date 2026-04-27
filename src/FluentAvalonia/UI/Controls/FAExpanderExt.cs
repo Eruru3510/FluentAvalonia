@@ -1,5 +1,6 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Animation;
+using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
@@ -60,7 +61,7 @@ public sealed class FAExpanderExt : AvaloniaObject
             expander.ClearValue(ExpanderAnimationInfoProperty);
         }
     }
-        
+
 
     private static readonly string s_Fluentv2 = "FluentV2";
 
@@ -138,7 +139,7 @@ public sealed class FAExpanderExt : AvaloniaObject
                         case ExpandDirection.Right:
                             RunExpandLeftRightAnimation(direction == ExpandDirection.Right);
                             break;
-                    }                    
+                    }
                 }
                 else
                 {
@@ -153,7 +154,7 @@ public sealed class FAExpanderExt : AvaloniaObject
                         case ExpandDirection.Right:
                             RunCollapseLeftRightAnimation(direction == ExpandDirection.Right);
                             break;
-                    }                    
+                    }
                 }
             }
         }
@@ -174,8 +175,19 @@ public sealed class FAExpanderExt : AvaloniaObject
                 _expanderContent.Measure(Size.Infinity);
                 _contentSize = _expanderContent.DesiredSize;
             }
-                
+
             var startY = down ? -_contentSize.Height : _contentSize.Height;
+
+            if (OperatingSystem.IsBrowser())
+            {
+                _expanderContent.Transitions = null;
+                _expanderContent.SetCurrentValue(TranslateTransform.YProperty, startY);
+                _expanderContent.Transitions = new Transitions { new DoubleTransition { Property = TranslateTransform.YProperty, Duration = TimeSpan.FromMilliseconds(333), Easing = new SplineEasing(0, 0, 0, 1) } };
+                await Task.Delay(1);
+                _expanderContent.SetCurrentValue(TranslateTransform.YProperty, 0d);
+                return;
+            }
+
             var ani = new Animation
             {
                 Duration = TimeSpan.FromMilliseconds(333),
@@ -209,6 +221,16 @@ public sealed class FAExpanderExt : AvaloniaObject
         private async void RunCollapseDownUpAnimation(bool down)
         {
             var endY = down ? -_contentSize.Height : _contentSize.Height;
+
+            if (OperatingSystem.IsBrowser())
+            {
+                _expanderContent.Transitions = new Transitions { new DoubleTransition { Property = TranslateTransform.YProperty, Duration = TimeSpan.FromMilliseconds(167), Easing = new SplineEasing(1, 1, 0, 1) } };
+                _expanderContent.SetCurrentValue(TranslateTransform.YProperty, endY);
+                await Task.Delay(167);
+                _expanderContent.SetCurrentValue(Visual.IsVisibleProperty, false);
+                return;
+            }
+
             var ani = new Animation
             {
                 Duration = TimeSpan.FromMilliseconds(167),
@@ -247,6 +269,17 @@ public sealed class FAExpanderExt : AvaloniaObject
             _expanderContent.Measure(Size.Infinity);
             _contentSize = _expanderContent.DesiredSize;
             var startX = right ? -_contentSize.Width : _contentSize.Width;
+
+            if (OperatingSystem.IsBrowser())
+            {
+                _expanderContent.Transitions = null;
+                _expanderContent.SetCurrentValue(TranslateTransform.XProperty, startX);
+                _expanderContent.Transitions = new Transitions { new DoubleTransition { Property = TranslateTransform.XProperty, Duration = TimeSpan.FromMilliseconds(333), Easing = new SplineEasing(0, 0, 0, 1) } };
+                await Task.Delay(1);
+                _expanderContent.SetCurrentValue(TranslateTransform.XProperty, 0d);
+                return;
+            }
+
             var ani = new Animation
             {
                 Duration = TimeSpan.FromMilliseconds(333),
@@ -280,6 +313,16 @@ public sealed class FAExpanderExt : AvaloniaObject
         private async void RunCollapseLeftRightAnimation(bool right)
         {
             var endX = right ? -_contentSize.Width : _contentSize.Width;
+
+            if (OperatingSystem.IsBrowser())
+            {
+                _expanderContent.Transitions = new Transitions { new DoubleTransition { Property = TranslateTransform.XProperty, Duration = TimeSpan.FromMilliseconds(167), Easing = new SplineEasing(1, 1, 0, 1) } };
+                _expanderContent.SetCurrentValue(TranslateTransform.XProperty, endX);
+                await Task.Delay(167);
+                _expanderContent.SetCurrentValue(Visual.IsVisibleProperty, false);
+                return;
+            }
+
             var ani = new Animation
             {
                 Duration = TimeSpan.FromMilliseconds(167),

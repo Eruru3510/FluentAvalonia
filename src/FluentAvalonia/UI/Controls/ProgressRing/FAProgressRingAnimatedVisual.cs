@@ -1,7 +1,6 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
-using Avalonia.Platform;
 using Avalonia.Rendering.Composition;
 using Avalonia.Skia;
 using Avalonia.VisualTree;
@@ -136,7 +135,7 @@ public sealed class FAProgressRingAnimatedVisual : Control
             _max = (float)maximum;
             _value = (float)value;
             _active = isActive;
-            
+
             if (background is ISolidColorBrush scb)
             {
                 _background = scb.Color.ToSKColor();
@@ -173,7 +172,7 @@ public sealed class FAProgressRingAnimatedVisual : Control
                 _paint.Color = _background.Value;
                 dc.DrawArc(_visualBounds, 0, 360, false, _paint);
             }
-            
+
             _paint.Color = _foreground;
             dc.DrawPath(_path, _paint);
         }
@@ -262,7 +261,7 @@ public sealed class FAProgressRingAnimatedVisual : Control
                 _path.AddArc(_visualBounds, -90, 360 * (size - _min) / (_max - _min));
             }
             else
-            {                
+            {
                 _path.Reset();
                 _path.MoveTo(40, 10);
                 _path.AddArc(_visualBounds, -90, 360 * (_value - _min) / (_max - _min));
@@ -284,26 +283,26 @@ public sealed class FAProgressRingAnimatedVisual : Control
                         break;
 
                     case HandlerMessageType.Value:
-                        {
-                            var next = (float)hm.Data;
-                            _lastValue = _value;
+                    {
+                        var next = (float)hm.Data;
+                        _lastValue = _value;
 
-                            // No animation if we drop the value
-                            if (next <= _value)
-                            {
-                                _value = next;
-                                _isAnimatingToValue = false;
-                            }
-                            else
-                            {
-                                // Increasing, animate to new value
-                                _value = next;
-                                _isAnimatingToValue = true;
-                                RegisterForNextAnimationFrameUpdate();
-                                return;
-                            }
-                        }                        
-                        break;
+                        // No animation if we drop the value
+                        if (next <= _value)
+                        {
+                            _value = next;
+                            _isAnimatingToValue = false;
+                        }
+                        else
+                        {
+                            // Increasing, animate to new value
+                            _value = next;
+                            _isAnimatingToValue = true;
+                            RegisterForNextAnimationFrameUpdate();
+                            return;
+                        }
+                    }
+                    break;
 
                     case HandlerMessageType.Active:
                         _active = (bool)hm.Data;
@@ -332,30 +331,30 @@ public sealed class FAProgressRingAnimatedVisual : Control
                         break;
 
                     case HandlerMessageType.Background:
+                    {
+                        if (hm.Data is SKColor c)
                         {
-                            if (hm.Data is SKColor c)
-                            {
-                                _background = c;
-                            }
-                            else
-                            {
-                                _background = null;
-                            }
+                            _background = c;
                         }
-                        break;
+                        else
+                        {
+                            _background = null;
+                        }
+                    }
+                    break;
 
                     case HandlerMessageType.Foreground:
+                    {
+                        if (hm.Data is SKColor c)
                         {
-                            if (hm.Data is SKColor c)
-                            {
-                                _foreground = c;
-                            }
-                            else
-                            {
-                                _foreground = SKColors.Transparent;
-                            }
+                            _foreground = c;
                         }
-                        break;
+                        else
+                        {
+                            _foreground = SKColors.Transparent;
+                        }
+                    }
+                    break;
                 }
 
                 Update();

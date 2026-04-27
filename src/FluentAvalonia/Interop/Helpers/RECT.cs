@@ -1,4 +1,4 @@
-﻿namespace FluentAvalonia.Interop.Win32;
+namespace FluentAvalonia.Interop.Win32;
 
 internal struct RECT
 {
@@ -24,5 +24,5 @@ internal struct RECT
     public int bottom;
 
     public int Width => right - left;
-    public int Height => bottom - top;   
+    public int Height => bottom - top;
 }

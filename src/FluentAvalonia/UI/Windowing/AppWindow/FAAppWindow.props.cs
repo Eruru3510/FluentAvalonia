@@ -1,8 +1,7 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
-using Avalonia.Styling;
 
 namespace FluentAvalonia.UI.Windowing;
 

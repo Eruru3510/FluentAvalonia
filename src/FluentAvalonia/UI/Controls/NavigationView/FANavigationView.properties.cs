@@ -1,12 +1,11 @@
-﻿using Avalonia;
+using System.Collections;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Shapes;
 using Avalonia.Controls.Templates;
 using FluentAvalonia.Core;
-using System.Collections;
-using System.Collections.Specialized;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -106,7 +105,7 @@ public partial class FANavigationView : HeaderedContentControl
     /// </summary>
     public static readonly StyledProperty<IEnumerable> FooterMenuItemsSourceProperty =
         AvaloniaProperty.Register<FANavigationView, IEnumerable>(nameof(FooterMenuItemsSource));
-        
+
     /// <summary>
     /// Defines the <see cref="IsBackButtonVisible"/> property
     /// </summary>
@@ -220,8 +219,8 @@ public partial class FANavigationView : HeaderedContentControl
     /// Defines the <see cref="SelectedItem"/> property
     /// </summary>
     public static readonly DirectProperty<FANavigationView, object> SelectedItemProperty =
-        SelectingItemsControl.SelectedItemProperty.AddOwner<FANavigationView>(x => x.SelectedItem, 
-            (x, v) => x.SelectedItem = v, 
+        SelectingItemsControl.SelectedItemProperty.AddOwner<FANavigationView>(x => x.SelectedItem,
+            (x, v) => x.SelectedItem = v,
             defaultBindingMode: Avalonia.Data.BindingMode.TwoWay);
 
     /// <summary>

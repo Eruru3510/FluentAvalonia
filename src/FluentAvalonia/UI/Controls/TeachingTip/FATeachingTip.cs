@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Animation.Easings;
@@ -86,9 +86,9 @@ public partial class FATeachingTip : ContentControl
 
         _alternateCloseButton.Click += OnCloseButtonClicked;
 
-        AutomationProperties.SetName(_alternateCloseButton, 
+        AutomationProperties.SetName(_alternateCloseButton,
             FALocalizationHelper.Instance.GetLocalizedStringResource(SR_TeachingTipAlternateCloseButtonName));
-        ToolTip.SetTip(_alternateCloseButton, 
+        ToolTip.SetTip(_alternateCloseButton,
             FALocalizationHelper.Instance.GetLocalizedStringResource(SR_TeachingTipAlternateCloseButtonTooltip));
 
 
@@ -344,7 +344,7 @@ public partial class FATeachingTip : ContentControl
 
             case FATeachingTipPlacementMode.LeftTop:
                 TrySetCenterPoint(_tailOcclusionGrid, width - lastColumnWidth, height - (nextToLastRowHeight + lastRowHeight + 1));
-               // TrySetCenterPoint(_tailEdgeBorder, 0, height - (nextToLastRowHeight + firstRowHeight + lastRowHeight));
+                // TrySetCenterPoint(_tailEdgeBorder, 0, height - (nextToLastRowHeight + firstRowHeight + lastRowHeight));
                 UpdateDynamicHeroContentPlacementToTop();
                 GoToState(FATeachingTipPlacementMode.LeftTop);
                 break;
@@ -421,7 +421,7 @@ public partial class FATeachingTip : ContentControl
             // We can't just use combinations of pseudoclasses here because we'd have no way to
             // differentiate between LeftTop and TopLeft visual states, for example
             if ((int)mode == -1) // Untargeted, remove all position pseudoclasses
-            {                
+            {
                 PseudoClasses.Set(s_pcTop, false);
                 PseudoClasses.Set(s_pcBottom, false);
                 PseudoClasses.Set(s_pcLeft, false);
@@ -441,238 +441,238 @@ public partial class FATeachingTip : ContentControl
             switch (mode)
             {
                 case FATeachingTipPlacementMode.Top:
-                    {
-                        PseudoClasses.Set(s_pcTop, true);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, true);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.Bottom:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, true);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, true);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.Left:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, true);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, true);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.Right:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, true);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, true);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.TopRight:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, true);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, true);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.TopLeft:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, true);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, true);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.BottomRight:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, true);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, true);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.BottomLeft:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, true);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, true);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.LeftTop:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, true);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, true);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.LeftBottom:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, true);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, true);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.RightTop:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, true);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, true);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.RightBottom:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, false);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, true);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, false);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, true);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
 
                 case FATeachingTipPlacementMode.Center:
-                    {
-                        PseudoClasses.Set(s_pcTop, false);
-                        PseudoClasses.Set(s_pcBottom, false);
-                        PseudoClasses.Set(s_pcLeft, false);
-                        PseudoClasses.Set(s_pcRight, false);
-                        PseudoClasses.Set(s_pcCenter, true);
-                        PseudoClasses.Set(s_pcTopRight, false);
-                        PseudoClasses.Set(s_pcTopLeft, false);
-                        PseudoClasses.Set(s_pcBottomLeft, false);
-                        PseudoClasses.Set(s_pcBottomRight, false);
-                        PseudoClasses.Set(s_pcLeftTop, false);
-                        PseudoClasses.Set(s_pcLeftBottom, false);
-                        PseudoClasses.Set(s_pcRightBottom, false);
-                        PseudoClasses.Set(s_pcRightTop, false);
-                    }
-                    break;
+                {
+                    PseudoClasses.Set(s_pcTop, false);
+                    PseudoClasses.Set(s_pcBottom, false);
+                    PseudoClasses.Set(s_pcLeft, false);
+                    PseudoClasses.Set(s_pcRight, false);
+                    PseudoClasses.Set(s_pcCenter, true);
+                    PseudoClasses.Set(s_pcTopRight, false);
+                    PseudoClasses.Set(s_pcTopLeft, false);
+                    PseudoClasses.Set(s_pcBottomLeft, false);
+                    PseudoClasses.Set(s_pcBottomRight, false);
+                    PseudoClasses.Set(s_pcLeftTop, false);
+                    PseudoClasses.Set(s_pcLeftBottom, false);
+                    PseudoClasses.Set(s_pcRightBottom, false);
+                    PseudoClasses.Set(s_pcRightTop, false);
+                }
+                break;
             }
         }
     }
@@ -1462,7 +1462,7 @@ public partial class FATeachingTip : ContentControl
         }
         IsOpen = false;
     }
-   
+
     private void RaiseClosingEvent(bool attachDeferralCompletedHandler)
     {
         var args = new FATeachingTipClosingEventArgs(_lastCloseReason);
@@ -1699,7 +1699,7 @@ public partial class FATeachingTip : ContentControl
             _expandAnimation.SetScalarParameter("Width", s_defaultTipHeightAndWidth);
             _expandAnimation.SetScalarParameter("Height", s_defaultTipHeightAndWidth);
         }
-        
+
         _expandEasingFunction = new SplineEasing(0.1, 0.9, 0.2, 1);
 
         _expandAnimation.InsertExpressionKeyFrame(0.0f, "Vector3(Min(0.01, 20.0 / Width), Min(0.01, 20.0 / Height), 1.0)");
@@ -1740,7 +1740,7 @@ public partial class FATeachingTip : ContentControl
         }
 
         (_contractAnimation as Vector3KeyFrameAnimation).InsertKeyFrame(0f, Vector3.One);
-        _contractAnimation.InsertExpressionKeyFrame(1.0f, "Vector3(20.0 / Width, 20.0 / Height, 1.0)", (Easing)_contractEasingFunction);        
+        _contractAnimation.InsertExpressionKeyFrame(1.0f, "Vector3(20.0 / Width, 20.0 / Height, 1.0)", (Easing)_contractEasingFunction);
         _contractAnimation.Duration = _contractAnimationDuration;
         _contractAnimation.Target = s_ScaleTargetName;
 
@@ -1803,7 +1803,7 @@ public partial class FATeachingTip : ContentControl
         // animation to finish before we continue
         if (_isExpandAnimationPlaying)
             _scopedBatch.Start(_expandAnimationDuration);
-        
+
         // Under normal circumstances we would have launched an animation just now, if we did not then we should make sure that the idle state is correct
         if (!_isExpandAnimationPlaying && !_isContractAnimationPlaying)
         {
@@ -1817,7 +1817,7 @@ public partial class FATeachingTip : ContentControl
         {
             CreateContractAnimation();
         }
-        
+
         // TODO: Need ScopedBatch to do this right
         if (_contractAnimation != null)
         {
@@ -1855,7 +1855,7 @@ public partial class FATeachingTip : ContentControl
         // animation to finish before we continue
         if (_isContractAnimationPlaying)
             _scopedBatch.Start(_contractAnimationDuration);
-                
+
         // Under normal circumstances we would have launched an animation just now, if we did not then we should make sure that the idle state is correct
         if (!_isExpandAnimationPlaying && !_isContractAnimationPlaying)
         {
@@ -2493,7 +2493,7 @@ public partial class FATeachingTip : ContentControl
 
 
     private static readonly string s_ScaleTargetName = "Scale";
-   // [Unused] private static readonly string s_translationTargetName = "Translation";
+    // [Unused] private static readonly string s_translationTargetName = "Translation";
 
     // [Unused] private static readonly string s_teachingTipHighlightBrushName = "TeachingTipTopHighlightBrush";
 
@@ -2511,7 +2511,7 @@ public partial class FATeachingTip : ContentControl
     private static readonly string SR_TeachingTipAlternateCloseButtonName = "TeachingTipAlternateCloseButtonName";
     private static readonly string SR_TeachingTipAlternateCloseButtonTooltip = "TeachingTipAlternateCloseButtonTooltip";
 
-    
+
 
     private class ScopedBatchHelper
     {

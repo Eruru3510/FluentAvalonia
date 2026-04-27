@@ -1,21 +1,35 @@
 <Project>
-  <PropertyGroup Label="Package Info">
-    <RepositoryUrl>https://github.com/amwx/FluentAvalonia</RepositoryUrl>
-    <Description>Control library focused on fluent design and bringing more WinUI controls into Avalonia </Description>
-    <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;fluent;fluent-design</PackageTags>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>3.0-preview1</Version>
-    <AssemblyVersion>3.0.0.0</AssemblyVersion>
-  </PropertyGroup>
+	<PropertyGroup Label="Package Info">
+		<RepositoryUrl>https://github.com/amwx/FluentAvalonia</RepositoryUrl>
+		<Description>Control library focused on fluent design and bringing more WinUI controls into
+			Avalonia </Description>
+		<PackageTags>
+			c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;fluent;fluent-design</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Version>3.0-preview1</Version>
+		<AssemblyVersion>3.0.0.0</AssemblyVersion>
+	</PropertyGroup>
 
-  <!-- Add Package Icon -->
-  <PropertyGroup>
-    <PackageIcon>FAIcon.png</PackageIcon>
-  </PropertyGroup>
-  
-  <ItemGroup Label="PackageIcon">
-    <None Include="$(MSBuildThisFileDirectory)/../Assets/FAIcon.png" Pack="true" Visible="false" PackagePath=""/>
-  </ItemGroup>
+	<PropertyGroup>
+		<EnableNETAnalyzers>false</EnableNETAnalyzers>
+		<AnalysisLevel>none</AnalysisLevel>
+		<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+		<EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+		<Nullable>disable</Nullable>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+		<NoWarn>$(NoWarn);CS*;CA*;SA*</NoWarn>
+	</PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)/SourceLink.props"/>
+	<!-- Add Package Icon -->
+	<PropertyGroup>
+		<PackageIcon>FAIcon.png</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup Label="PackageIcon">
+		<None Include="$(MSBuildThisFileDirectory)/../Assets/FAIcon.png" Pack="true" Visible="false"
+			PackagePath="" />
+	</ItemGroup>
+
+	<Import Project="$(MSBuildThisFileDirectory)/SourceLink.props" />
 </Project>

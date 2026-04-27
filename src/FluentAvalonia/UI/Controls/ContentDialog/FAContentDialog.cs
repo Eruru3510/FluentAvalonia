@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Presenters;
@@ -365,7 +365,7 @@ public partial class FAContentDialog : ContentControl, ICustomKeyboardNavigation
                 if (!_primaryButton.IsVisible)
                 {
 #if DEBUG
-                    Logger.TryGet(LogEventLevel.Debug, "ContentDialog")?.Log("SetupDialog", 
+                    Logger.TryGet(LogEventLevel.Debug, "ContentDialog")?.Log("SetupDialog",
                         "DefaultButton was set to Primary, but PrimaryButton is not enabled");
 #endif
                     break;

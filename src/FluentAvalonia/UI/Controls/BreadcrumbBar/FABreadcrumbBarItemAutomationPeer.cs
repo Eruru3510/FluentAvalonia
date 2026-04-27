@@ -1,4 +1,4 @@
-﻿using Avalonia.Automation.Peers;
+using Avalonia.Automation.Peers;
 using Avalonia.Automation.Provider;
 using Avalonia.Controls;
 
@@ -9,7 +9,7 @@ namespace FluentAvalonia.UI.Controls;
 /// </summary>
 public class FABreadcrumbBarItemAutomationPeer : ControlAutomationPeer, IInvokeProvider
 {
-    public FABreadcrumbBarItemAutomationPeer(Control owner) 
+    public FABreadcrumbBarItemAutomationPeer(Control owner)
         : base(owner)
     {
     }
@@ -25,7 +25,7 @@ public class FABreadcrumbBarItemAutomationPeer : ControlAutomationPeer, IInvokeP
         return nameof(FABreadcrumbBarItem);
     }
 
-    protected override AutomationControlType GetAutomationControlTypeCore() => 
+    protected override AutomationControlType GetAutomationControlTypeCore() =>
         AutomationControlType.Button;
 
     private FABreadcrumbBarItem GetImpl() => Owner as FABreadcrumbBarItem;

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Specialized;
 using Avalonia;
 using Avalonia.Controls;
@@ -10,7 +10,6 @@ using Avalonia.Input;
 using Avalonia.Layout;
 using Avalonia.Logging;
 using Avalonia.Threading;
-using Avalonia.Utilities;
 using Avalonia.VisualTree;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Data;
@@ -133,7 +132,7 @@ public sealed class FATabViewListView : ListBox
     protected override Control CreateContainerForItemOverride(object item, int index, object recycleKey)
     {
         var cont = this.FindDataTemplate(item, ItemTemplate)?.Build(item);
-        
+
         if (cont is FATabViewItem tvi)
         {
             tvi.IsContainerFromTemplate = true;
@@ -294,7 +293,7 @@ public sealed class FATabViewListView : ListBox
         // 1- Mouse Button Release
         // 2- Start of DragDrop
     }
-    
+
 
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
@@ -423,9 +422,9 @@ public sealed class FATabViewListView : ListBox
                 DragOver?.Invoke(this, e);
 
             // If this ListView initiated drag drop, _dragItem will be set
-            _isDraggingOverSelf = _dragItem != null;            
+            _isDraggingOverSelf = _dragItem != null;
         }
-                
+
         Process(_isInReorder, canReorder, e);
 
         if (_scrollTimer == null)
@@ -450,7 +449,7 @@ public sealed class FATabViewListView : ListBox
                 // Reorder operations have this
                 var effects = isInReorder || canReorder ? DragDropEffects.Move : DragDropEffects.None;
                 args.DragEffects &= effects;
-            }            
+            }
         }
     }
 
@@ -470,7 +469,7 @@ public sealed class FATabViewListView : ListBox
                 _liveReorderHelper?.ResetAllItemsForLiveReorder();
                 DragLeave?.Invoke(this, e);
             }
-        }        
+        }
     }
 
     private void OnListViewDrop(object sender, DragEventArgs e)
@@ -573,7 +572,7 @@ public sealed class FATabViewListView : ListBox
 
         // Note that _dragItem is no longer valid since the container
         // may have changed, grab the new container from insertIndex
-        
+
         UpdateLayout(); // Force an update so ScrollIntoView works
 
         ScrollIntoView(insertIndex);
@@ -863,7 +862,7 @@ public sealed class FATabViewListView : ListBox
     // I tried to object, and failed (https://github.com/AvaloniaUI/Avalonia/pull/20988)
     // And you guessed it, freakin' Wayland
     private PointerPressedEventArgs _initArgs;
-    
+
     private DispatcherTimer _scrollTimer;
     private Vector _currentAutoPanVelocity;
 

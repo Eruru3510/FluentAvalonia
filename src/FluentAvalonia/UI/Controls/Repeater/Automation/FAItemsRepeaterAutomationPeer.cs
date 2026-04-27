@@ -1,4 +1,4 @@
-﻿using Avalonia.Automation.Peers;
+using Avalonia.Automation.Peers;
 using Avalonia.Controls;
 using Avalonia.VisualTree;
 
@@ -6,7 +6,7 @@ namespace FluentAvalonia.UI.Controls;
 
 public class FAItemsRepeaterAutomationPeer : ControlAutomationPeer
 {
-    public FAItemsRepeaterAutomationPeer(Control owner) 
+    public FAItemsRepeaterAutomationPeer(Control owner)
         : base(owner)
     {
     }

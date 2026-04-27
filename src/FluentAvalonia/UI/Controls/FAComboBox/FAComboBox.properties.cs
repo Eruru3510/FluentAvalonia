@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
@@ -146,7 +146,7 @@ public partial class FAComboBox : HeaderedSelectingItemsControl
         get => GetValue(IsDropDownOpenProperty);
         set => SetValue(IsDropDownOpenProperty, value);
     }
-        
+
     /// <summary>
     /// Gets whether the SelectionBox is hightlighted
     /// </summary>

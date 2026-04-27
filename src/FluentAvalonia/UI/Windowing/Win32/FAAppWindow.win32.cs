@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using Avalonia.Controls;
+using System.Runtime.CompilerServices;
 using FluentAvalonia.Interop;
 
 namespace FluentAvalonia.UI.Windowing;

@@ -37,6 +37,12 @@ csharp_new_line_before_members_in_object_initializers = true
 csharp_new_line_before_members_in_anonymous_types = true
 csharp_new_line_between_query_expression_clauses = true
 
+dotnet_diagnostic.CS2002.severity = none
+dotnet_diagnostic.CS0169.severity = none
+dotnet_diagnostic.CS0414.severity = none
+dotnet_diagnostic.CS0649.severity = none
+dotnet_diagnostic.CS0618.severity = none
+
 # Indentation preferences
 csharp_indent_block_contents = true
 csharp_indent_braces = false

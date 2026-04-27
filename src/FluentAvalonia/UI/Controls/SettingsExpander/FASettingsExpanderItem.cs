@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
@@ -188,7 +188,7 @@ public partial class FASettingsExpanderItem : ContentControl, ICommandSource
 
                 OnClick();
             }
-        }       
+        }
     }
 
     protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)

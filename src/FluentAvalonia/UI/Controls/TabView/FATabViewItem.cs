@@ -1,15 +1,10 @@
-﻿using System.Diagnostics;
 using System.Globalization;
-using System.Text;
 using Avalonia;
 using Avalonia.Automation;
 using Avalonia.Automation.Peers;
 using Avalonia.Controls;
-using Avalonia.Controls.Documents;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
-using Avalonia.Controls.Shapes;
-using Avalonia.Diagnostics;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
@@ -31,7 +26,7 @@ public partial class FATabViewItem : FASelectorItem
         Loaded += OnLoaded;
         SizeChanged += OnSizeChanged;
     }
-    
+
     protected internal FATabView ParentTabView
     {
         get
@@ -260,7 +255,7 @@ public partial class FATabViewItem : FASelectorItem
             _hasPointerCapture = false;
             _isMiddlePointerButtonPressed = false;
         }
-                
+
         RestoreLeftAdjacentTabSeparatorVisibility();
     }
 
@@ -439,23 +434,23 @@ public partial class FATabViewItem : FASelectorItem
             switch (_closeButtonOverlayMode)
             {
                 case FATabViewCloseButtonOverlayMode.OnPointerOver:
-                    {    // If we only want to show the button on hover, we also show it when we are selected, otherwise hide it
-                        if (IsSelected || _isPointerOver)
-                        {
-                            isCollapsed = false;
-                        }
-                        else
-                        {
-                            isCollapsed = true;
-                        }
-                        break;
-                    }
-                default:
+                {    // If we only want to show the button on hover, we also show it when we are selected, otherwise hide it
+                    if (IsSelected || _isPointerOver)
                     {
-                        // Default, use "Auto"
                         isCollapsed = false;
-                        break;
                     }
+                    else
+                    {
+                        isCollapsed = true;
+                    }
+                    break;
+                }
+                default:
+                {
+                    // Default, use "Auto"
+                    isCollapsed = false;
+                    break;
+                }
             }
         }
 

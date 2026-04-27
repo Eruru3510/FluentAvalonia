@@ -1,15 +1,14 @@
-﻿using Avalonia;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
-using Avalonia.Layout;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls.Primitives;
-using System.Collections.Specialized;
-using System.ComponentModel;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -321,7 +320,7 @@ public partial class FANavigationViewItem : FANavigationViewItemBase
         UpdateRepeaterItemsSource();
         UpdateVisualStateForChevron();
     }
-        
+
     private void OnHasUnrealizedChildrenPropertyChanged()
     {
         UpdateVisualStateForChevron();

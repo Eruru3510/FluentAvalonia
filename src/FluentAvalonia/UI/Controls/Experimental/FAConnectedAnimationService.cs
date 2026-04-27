@@ -1,4 +1,4 @@
-﻿// NOTE: This class is experimental and will not receive support.
+// NOTE: This class is experimental and will not receive support.
 // Use at your own risk
 
 using Avalonia;
@@ -23,7 +23,7 @@ public class FAConnectedAnimationService
 
     public TimeSpan DefaultDuration { get; set; } = TimeSpan.FromMilliseconds(3000);
 
-    public Easing DefaultEasingFunction { get; set; } = new SplineEasing(0.8,0,0.2,1);
+    public Easing DefaultEasingFunction { get; set; } = new SplineEasing(0.8, 0, 0.2, 1);
 
     public static FAConnectedAnimationService GetForView(TopLevel topLevel)
     {

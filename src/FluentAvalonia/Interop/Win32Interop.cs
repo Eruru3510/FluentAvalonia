@@ -1,8 +1,6 @@
-﻿using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using Avalonia;
-using FluentAvalonia.Interop;
 using FluentAvalonia.Interop.Win32;
 using MicroCom.Runtime;
 
@@ -30,10 +28,10 @@ internal static unsafe partial class Win32Interop
 
     [DllImport(s_user32, SetLastError = true)]
     private static extern BOOL AdjustWindowRectExForDpi(RECT* lpRect, int dwStyle, BOOL bMenu, int dwExStyle, int dpi);
-    
+
     [DllImport(s_user32, SetLastError = true)]
     private static extern bool AdjustWindowRectEx(RECT* lpRect, int dwStyle, bool bMenu, int dwExStyle);
-    
+
     [DllImport(s_user32, SetLastError = true)]
     public static extern LRESULT DefWindowProcW(HWND hWnd, uint msg, WPARAM wParam, LPARAM lParam);
 
@@ -72,7 +70,7 @@ internal static unsafe partial class Win32Interop
             return GetSystemMetricsForDpi(nIndex, dpi);
         return GetSystemMetrics(nIndex);
     }
-    
+
     public static void AdjustWindowRectExWithFallback(RECT* lpRect, int dwStyle, BOOL bMenu, int dwExStyle, int dpi)
     {
         if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393)) // 1607
@@ -82,7 +80,7 @@ internal static unsafe partial class Win32Interop
         }
         AdjustWindowRectEx(lpRect, dwStyle, bMenu, dwExStyle);
     }
-    
+
     public static nint GetWindowLongPtrW(HWND hWnd, int nIndex)
     {
         if (sizeof(nint) == 4)
@@ -138,7 +136,7 @@ internal static unsafe partial class Win32Interop
     [DllImport(s_dwmapi, SetLastError = true)]
     public static extern int DwmSetWindowAttribute(nint hWnd, DWMWINDOWATTRIBUTE attr, void* value, int attrSize);
 
-    
+
 
     [DllImport(s_user32, SetLastError = true)]
     public static unsafe extern int SetWindowCompositionAttribute(IntPtr hwnd, WINDOWCOMPOSITIONATTRIBDATA* data);
@@ -195,7 +193,7 @@ internal static unsafe partial class Win32Interop
             if (success == 0)
                 return false;
         }
-        
+
         // Try to get the window to redraw to reflect the changes
         SetWindowPos((HWND)hwnd, HWND.NULL, 0, 0, 0, 0,
             SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);

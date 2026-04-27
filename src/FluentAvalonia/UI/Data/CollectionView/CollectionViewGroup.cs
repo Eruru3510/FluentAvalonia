@@ -1,9 +1,9 @@
-﻿using Avalonia.Collections;
-using Avalonia.Data;
-using FluentAvalonia.Core;
 using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using Avalonia.Collections;
+using Avalonia.Data;
+using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Data;
 
@@ -177,38 +177,38 @@ internal class SpecializedCollectionViewGroup : CollectionViewGroup, IComparer<o
         switch (args.Action)
         {
             case NotifyCollectionChangedAction.Add:
+            {
+                AttachPropertyChangedHandler(args.NewItems);
+                if (_owner.DeferCounter <= 0)
                 {
-                    AttachPropertyChangedHandler(args.NewItems);
-                    if (_owner.DeferCounter <= 0)
+                    if (args.NewItems.Count == 1)
                     {
-                        if (args.NewItems.Count == 1)
-                        {
-                            HandleItemAdded(args.NewStartingIndex, args.NewItems[0]);
-                        }
-                        else
-                        {
-                            SourceChanged();
-                        }
+                        HandleItemAdded(args.NewStartingIndex, args.NewItems[0]);
+                    }
+                    else
+                    {
+                        SourceChanged();
                     }
                 }
-                break;
+            }
+            break;
 
             case NotifyCollectionChangedAction.Remove:
+            {
+                DetachPropertyChangedHandler(args.OldItems);
+                if (_owner.DeferCounter <= 0)
                 {
-                    DetachPropertyChangedHandler(args.OldItems);
-                    if (_owner.DeferCounter <= 0)
+                    if (args.OldItems.Count == 1)
                     {
-                        if (args.OldItems.Count == 1)
-                        {
-                            HandleItemRemoved(args.OldStartingIndex, args.OldItems[0]);
-                        }
-                        else
-                        {
-                            SourceChanged();
-                        }
+                        HandleItemRemoved(args.OldStartingIndex, args.OldItems[0]);
+                    }
+                    else
+                    {
+                        SourceChanged();
                     }
                 }
-                break;
+            }
+            break;
 
             default:
                 SourceChanged();

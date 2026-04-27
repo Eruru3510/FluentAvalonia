@@ -1,4 +1,4 @@
-﻿namespace FluentAvalonia.UI.Controls;
+namespace FluentAvalonia.UI.Controls;
 
 internal readonly struct IndexRange : IEquatable<IndexRange>
 {
@@ -77,7 +77,7 @@ internal readonly struct IndexRange : IEquatable<IndexRange>
     public override string ToString() => $"[{Begin}..{End}]";
 
     public static bool operator ==(IndexRange left, IndexRange right) => left.Equals(right);
-    
+
     public static bool operator !=(IndexRange left, IndexRange right) => !(left == right);
 
     public static int Add(

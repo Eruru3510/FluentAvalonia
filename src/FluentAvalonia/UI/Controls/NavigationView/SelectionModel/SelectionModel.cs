@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -220,7 +220,7 @@ internal class SelectionModel : INotifyPropertyChanged, IDisposable
                     {
                         int currentIndex = 0;
                         IndexPath path = IndexPath.Unselected;
-                        foreach(var info in infos)
+                        foreach (var info in infos)
                         {
                             if (info.Node.TryGetTarget(out var node))
                             {
